@@ -43,7 +43,7 @@ Current environment:
 - SaaS applications such as Microsoft 365, CRM, collaboration tools.
 - Remote users.
 - Existing MPLS and Internet circuits.
-- Existing Cisco SD-WAN knowledge in the operations team.
+- Interest in using SD-WAN or another WAN overlay to standardize branch connectivity.
 - Existing VLAN/ACL-based campus segmentation.
 - Existing firewalls at data center and Internet edge.
 - Limited automation.
@@ -114,7 +114,7 @@ Possible constraints:
 
 Possible assumptions:
 
-- Cisco SD-WAN knowledge already exists.
+- The operations team can be trained on SD-WAN or the selected WAN overlay during the pilot.
 - Identity integration can be built using an enterprise identity platform.
 - Branches can be migrated in waves.
 - New sites can use standardized templates.
@@ -220,7 +220,7 @@ Typical domain choices:
 
 | Domain | Recommended Approach | Reason |
 |---|---|---|
-| WAN / Branch | Cisco Catalyst SD-WAN | Team already has SD-WAN knowledge; strong branch use case |
+| WAN / Branch | Cisco Catalyst SD-WAN or equivalent WAN overlay | Strong branch standardization and application-aware routing use case |
 | Campus | Cisco SD-Access or phased campus fabric | Identity-based segmentation and wired/wireless policy |
 | Data Center | Cisco ACI or EVPN-VXLAN fabric | Application segmentation and data center automation |
 | Cloud | Cloud-native networking plus SD-WAN/cloud on-ramp | Hybrid application access and controlled routing |
@@ -444,7 +444,7 @@ Design questions:
 
 Recommended approach:
 
-- Use SD-WAN as the first broad SDN domain if the team already has knowledge.
+- Consider a WAN overlay as the first broad SDN domain when branch standardization, transport independence, and application-aware routing are high-value goals.
 - Standardize branch templates.
 - Use transport independence across MPLS and Internet.
 - Define application-aware routing policy.
@@ -1041,4 +1041,3 @@ Challenge questions for instructors:
 - Cisco, Common Policy Integration Guide: https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/catalyst-center/cisco-validated-solution-profiles/common-policy-integration-guide.html
 - Cisco, Zero Trust: https://www.cisco.com/site/us/en/solutions/security/zero-trust/index.html
 - NIST Zero Trust Architecture SP 800-207: https://csrc.nist.gov/publications/detail/sp/800-207/final
-

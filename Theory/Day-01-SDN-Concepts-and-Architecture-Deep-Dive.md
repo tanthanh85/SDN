@@ -2,14 +2,14 @@
 
 ## 1. Audience, Positioning, and Learning Outcomes
 
-This material is designed for experienced network engineers, architects, and operations staff who already understand traditional routing, switching, VLANs, VRFs, ACLs, firewall zones, WAN design, and have prior exposure to Cisco SD-WAN.
+This material is designed for experienced network engineers, architects, and operations staff who already understand traditional routing, switching, VLANs, VRFs, ACLs, firewall zones, and WAN design.
 
 The objective is not to teach basic networking again. The objective is to help learners reframe existing network knowledge through a software-defined architecture:
 
 - How control, forwarding, policy, automation, and telemetry are separated.
 - How traditional designs can evolve into SDN fabrics.
 - How SDN changes the operating model, not just the product stack.
-- How Cisco SD-WAN concepts map to broader SDN concepts.
+- How SD-WAN concepts map to broader SDN concepts.
 - How to evaluate when SDN is useful, where it is risky, and how to migrate safely.
 
 By the end of Day 1, learners should be able to:
@@ -1014,9 +1014,9 @@ Policy examples:
 - Policy matrix must be designed before broad rollout.
 - Integration with non-fabric areas must be planned carefully.
 
-## 22. Cisco Catalyst SD-WAN as a Familiar SDN Example
+## 22. Cisco Catalyst SD-WAN as a Practical SDN Example
 
-Because learners already know Cisco SD-WAN, it is the best bridge into broader SDN thinking.
+Cisco Catalyst SD-WAN is a practical example of SDN in the WAN domain. Even if learners have not worked with SD-WAN before, the architecture is useful because it clearly shows underlay/overlay separation, controller-based policy, centralized templates, secure tunnels, and application-aware routing.
 
 ```mermaid
 flowchart TB
@@ -1396,8 +1396,8 @@ Avoid starting with:
 
 Recommended teaching flow:
 
-1. Begin with Cisco SD-WAN as the familiar example.
-2. Abstract SD-WAN into SDN concepts: controller, edge, overlay, underlay, policy, telemetry.
+1. Introduce Cisco SD-WAN as a concrete WAN-domain SDN example.
+2. Abstract the SD-WAN architecture into SDN concepts: controller, edge, overlay, underlay, policy, telemetry.
 3. Generalize to campus, data center, cloud, and security.
 4. Introduce OpenFlow only as a learning model, not as the definition of SDN.
 5. Use diagrams to separate architecture from product names.
@@ -1528,7 +1528,7 @@ Lab concepts to connect back to theory:
 - APIs are operational interfaces, not optional add-ons.
 - Automation without validation can create outages faster.
 - Segmentation is one of the strongest SDN use cases.
-- Cisco SD-WAN is a practical and familiar SDN example.
+- Cisco SD-WAN is a practical WAN-domain SDN example.
 - Enterprise SDN transformation should be phased, evidence-based, and tied to business problems.
 
 ## 35. References
@@ -1543,4 +1543,3 @@ Lab concepts to connect back to theory:
 - Open Networking Foundation: https://opennetworking.org/
 - Open vSwitch documentation: https://docs.openvswitch.org/
 - Mininet documentation: http://mininet.org/
-

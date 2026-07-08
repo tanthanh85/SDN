@@ -23,7 +23,7 @@ This lab is for experienced network engineers who understand:
 - VLANs, VRFs, ACLs, firewall zones.
 - OSPF/BGP/static routing.
 - WAN and branch connectivity.
-- SD-WAN concepts.
+- WAN overlay concepts will be introduced during the exercise.
 - Basic campus/data center architecture.
 - Change management and maintenance windows.
 
@@ -327,7 +327,7 @@ flowchart LR
 
 ## 7.1 Scenario
 
-The enterprise already has Cisco SD-WAN for branch connectivity. The company now wants to extend segmentation from campus and branch users to data center applications.
+The enterprise is evaluating SD-WAN for branch connectivity while also planning segmentation across campus, WAN, and data center domains.
 
 The business wants consistent policy for:
 
@@ -682,7 +682,7 @@ Recommended first pilot:
 
 Reason:
 
-- SD-WAN knowledge already exists.
+- Branch templates and WAN standardization provide clear value.
 - Branch templates provide clear value.
 - Blast radius is limited.
 - Success metrics are measurable.
@@ -771,4 +771,3 @@ Common mistakes:
 - Brownfield migration must be phased, validated, and reversible.
 - A good pilot has limited blast radius and measurable success.
 - The best SDN design is not the most advanced one; it is the safest design that solves real business problems.
-

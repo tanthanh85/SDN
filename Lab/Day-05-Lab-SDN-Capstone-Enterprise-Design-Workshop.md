@@ -66,7 +66,7 @@ The enterprise has:
 - Existing firewall infrastructure.
 - Basic monitoring.
 - Limited automation.
-- Existing Cisco SD-WAN knowledge in the network team.
+- Interest in SD-WAN or another WAN overlay for standardized branch connectivity.
 
 ## 3.2 Current-State Architecture
 
@@ -164,7 +164,7 @@ Assume:
 - The security team owns firewall policy.
 - The cloud team owns cloud route tables and security groups.
 - Operations team has limited automation experience.
-- Existing SD-WAN knowledge is available.
+- The team can be trained on SD-WAN or the selected WAN overlay during the pilot.
 - Change windows are limited to weekends for major changes.
 
 ## 7. Required Group Deliverables
@@ -278,7 +278,7 @@ Complete the table:
 
 Guidance:
 
-- WAN is often a strong first SDN domain because the team already knows Cisco SD-WAN.
+- WAN is often a strong first SDN domain because branch standardization and application-aware routing create measurable value.
 - Campus may be phased by building or user group.
 - Data center SDN should start with selected applications.
 - OT should be conservative and firewall/DMZ-driven.
@@ -616,7 +616,7 @@ Use these questions during presentations:
 
 A strong answer usually includes:
 
-- Start with SD-WAN expansion because the team already has SD-WAN knowledge.
+- Consider starting with a WAN overlay pilot because branch standardization has clear scope, measurable value, and manageable rollback.
 - Use phased campus SDN for guest/IoT/corporate segmentation.
 - Use data center SDN for selected application groups, not all workloads at once.
 - Use IT/OT firewall and industrial DMZ before deeper OT segmentation.
@@ -670,4 +670,3 @@ Ask the class:
 - Monitoring and assurance must be included from the start.
 - Migration must be phased and reversible.
 - The strongest design is the one that solves business problems with controlled risk.
-

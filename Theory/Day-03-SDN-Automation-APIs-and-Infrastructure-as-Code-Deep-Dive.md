@@ -10,7 +10,7 @@ Day 3 focuses on automation:
 
 > How do we operate SDN and traditional network infrastructure through APIs, models, templates, and repeatable workflows instead of manual device-by-device configuration?
 
-This day is designed for experienced network engineers who understand networking fundamentals and have seen Cisco SD-WAN. The goal is to move learners from "I can configure the network" to "I can design a controlled automation workflow for network change."
+This day is designed for experienced network engineers who understand networking fundamentals. The goal is to move learners from "I can configure the network" to "I can design a controlled automation workflow for network change."
 
 By the end of Day 3, learners should be able to:
 
@@ -1328,4 +1328,3 @@ Important messages:
 - IETF RESTCONF: https://datatracker.ietf.org/doc/html/rfc8040
 - YANG 1.1: https://datatracker.ietf.org/doc/html/rfc7950
 - OpenConfig: https://www.openconfig.net/
-

@@ -8,7 +8,7 @@ Day 2 focuses on the practical question every enterprise eventually faces:
 
 > How do we introduce SDN into an existing traditional network without breaking the business?
 
-This day is written for experienced network engineers who already understand routing, switching, WAN, firewalling, segmentation, and Cisco SD-WAN. The emphasis is on architecture, integration, migration, design trade-offs, and brownfield reality.
+This day is written for experienced network engineers who already understand routing, switching, WAN, firewalling, and segmentation. SD-WAN is treated as one SDN deployment domain. The emphasis is on architecture, integration, migration, design trade-offs, and brownfield reality.
 
 By the end of Day 2, learners should be able to:
 
@@ -1362,7 +1362,7 @@ Enterprise profile:
 - Existing MPLS and Internet circuits.
 - Existing firewalls.
 - Existing VLAN/ACL-based segmentation.
-- Prior Cisco SD-WAN exposure.
+- Interest in improving WAN and branch connectivity.
 
 Business goals:
 
@@ -1416,7 +1416,7 @@ Recommended teaching flow:
 2. Review the Day 1 architecture quickly.
 3. Move into brownfield reality and hybrid deployment.
 4. Spend significant time on routing and segmentation integration.
-5. Use Cisco SD-WAN as the familiar domain, then connect it to campus and data center SDN.
+5. Use Cisco SD-WAN as the WAN-domain example, then connect it to campus and data center SDN.
 6. Discuss firewalls, NAT, identity, and cloud early. These are often the real blockers.
 7. End with migration phases, rollback, and validation.
 
@@ -1464,4 +1464,3 @@ Common discussion prompts:
 - Cisco, Catalyst SD-WAN: https://www.cisco.com/site/us/en/solutions/networking/sdwan/catalyst/index.html
 - Cisco, Common Policy Integration Guide: https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/catalyst-center/cisco-validated-solution-profiles/common-policy-integration-guide.html
 - Cisco, ACI and Catalyst SD-WAN integration: https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-xe-17/policies-book-xe/integration-with-Cisco-ACI.html
-
