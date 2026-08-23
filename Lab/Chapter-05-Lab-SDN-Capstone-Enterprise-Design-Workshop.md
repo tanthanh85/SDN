@@ -1,8 +1,8 @@
-# Day 5 Lab - SDN Capstone Enterprise Design Workshop
+# Chapter 5 Lab - SDN Capstone Enterprise Design Workshop
 
 ## 1. Lab Purpose
 
-Day 5 is the capstone lab for the SDN course.
+Chapter 5 is the capstone lab for the SDN course.
 
 The objective is to synthesize everything from Days 1-4:
 
@@ -26,7 +26,7 @@ Suggested timing:
 
 | Section | Time |
 |---|---:|
-| Instructor briefing and scenario review | 30 min |
+| Workshop briefing and scenario review | 30 min |
 | Group design work phase 1: requirements and target architecture | 60 min |
 | Group design work phase 2: segmentation, routing, security | 75 min |
 | Group design work phase 3: automation, monitoring, migration | 75 min |
@@ -411,7 +411,7 @@ Required elements:
 - Passive monitoring.
 - Emergency access process.
 
-Example:
+Scenario:
 
 ```mermaid
 flowchart LR
@@ -583,7 +583,7 @@ Required sections:
 11. Risks, validation, and rollback.
 12. Final recommendation.
 
-## 21. Instructor Challenge Questions
+## 21. Design Review Questions
 
 Use these questions during presentations:
 
@@ -612,7 +612,7 @@ Use these questions during presentations:
 | Migration and Risk | 20% | Phased roadmap, rollback, validation, risk mitigation |
 | Presentation | 10% | Clear explanation, trade-off analysis, answers to challenge questions |
 
-## 23. Instructor Suggested Answer Direction
+## 23. Suggested Design Direction
 
 A strong answer usually includes:
 

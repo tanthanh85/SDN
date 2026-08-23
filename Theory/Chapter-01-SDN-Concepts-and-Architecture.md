@@ -1,27 +1,25 @@
-# Day 1 - SDN Concepts and Architecture Deep Dive
+# Chapter 1 - SDN Concepts and Architecture
 
 ## 1. Audience, Positioning, and Learning Outcomes
 
 This material is designed for experienced network engineers, architects, and operations staff who already understand traditional routing, switching, VLANs, VRFs, ACLs, firewall zones, and WAN design.
 
-The objective is not to teach basic networking again. The objective is to help learners reframe existing network knowledge through a software-defined architecture:
+The objective is not to teach basic networking again. The objective is to help participants reframe existing network knowledge through a software-defined architecture:
 
-- How control, forwarding, policy, automation, and telemetry are separated.
-- How traditional designs can evolve into SDN fabrics.
+- How control, forwarding, policy, automation, management and telemetry are separated.
 - How SDN changes the operating model, not just the product stack.
-- How SD-WAN concepts map to broader SDN concepts.
-- How to evaluate when SDN is useful, where it is risky, and how to migrate safely.
+- How controller-based networking, overlays, fabrics, policy, automation, and telemetry fit into an SDN architecture.
+- How to recognize the benefits and risks introduced by controller-based networking.
 
-By the end of Day 1, learners should be able to:
+By the end of Chapter 1, participants should be able to:
 
 - Explain SDN as an architectural model, not a single protocol or vendor product.
 - Compare traditional distributed control with controller-driven and intent-based networking.
 - Describe the roles of the data plane, control plane, management plane, and application plane.
 - Explain northbound and southbound APIs.
 - Distinguish underlay, overlay, fabric, controller, policy, and telemetry.
-- Explain why SD-WAN is a practical example of SDN.
-- Compare major Cisco SDN domains: ACI, SD-Access, Catalyst SD-WAN, and Meraki.
-- Identify SDN migration opportunities in brownfield enterprise networks.
+- Explain how WAN overlays, campus fabrics, and data center fabrics are practical SDN use cases.
+- Compare major Cisco SDN domains across data center, campus, WAN overlay, and cloud-managed branch environments.
 - Recognize operational and security risks introduced by SDN.
 
 ## 2. Why Traditional Networks Became Difficult to Operate
@@ -34,14 +32,14 @@ Common pain points in traditional environments:
 
 - Configuration is repeated across many devices.
 - Policy is distributed across VLANs, ACLs, VRFs, firewall rules, route maps, and QoS policies.
-- Network intent is hidden inside device configuration.
-- Changes are slow because impact analysis is manual.
-- Visibility is fragmented across CLI, SNMP, syslog, NetFlow, firewall logs, and ticket notes.
-- Brownfield networks accumulate inconsistent naming, addressing, and policy conventions.
+- Network intent is hidden inside device configuration. Network engineers are the ones who have translated network intent to the actual device configurations for years.
+- Changes are slow (and often take several steps to get approved by management) because impact analysis is manual.
+- Visibility is more often than not fragmented across CLI, SNMP, syslog, NetFlow, firewall logs, and ticket notes.
+- Brownfield networks accumulate inconsistent naming, addressing, and policy conventions...
 - Adding new sites or segments often requires many coordinated changes.
-- Security segmentation is difficult to keep consistent across campus, WAN, data center, and cloud.
+- Security segmentation is difficult to keep consistent across wired/wireless campus, WAN, data center, and cloud.
 
-### Example: Traditional Branch Rollout
+### Branch Rollout Operational View
 
 A new branch may require:
 
@@ -54,9 +52,9 @@ A new branch may require:
 - DHCP, DNS, NTP, SNMP, syslog configuration.
 - Documentation updates.
 
-In a mature organization, this may involve several teams and several change windows. The technical tasks are not individually difficult, but the coordination cost and error probability are high.
+In a mature organization, this may involve several teams and several change windows (and several steps to get approval). The technical tasks are not individually difficult, but the coordination cost and error probability are high.
 
-### Example: Traditional Segmentation Problem
+### Brownfield Segmentation Challenge
 
 Assume an enterprise wants to separate:
 
@@ -99,7 +97,7 @@ SDN does not always mean:
 - Fully autonomous networking.
 - No CLI.
 
-SDN is best understood as a spectrum. Some environments use only API-based automation. Some use overlay fabrics. Some use complete controller-driven policy. Some integrate multiple domains such as SD-WAN, campus fabric, data center fabric, and cloud networking.
+SDN is best understood as a spectrum. Some environments use only API-based automation. Some use overlay fabrics. Some use complete controller-driven policy. Some integrate multiple domains such as campus fabric, data center fabric, WAN overlay, cloud networking, and security platforms.
 
 ## 4. Traditional Networking vs SDN
 
@@ -121,6 +119,10 @@ SDN does not remove the need for strong network fundamentals. It moves the engin
 
 ## 5. High-Level SDN Architecture
 
+![High-level SDN architecture](../Assets/Chapter-01/sdn-high-level-architecture.png)
+
+**Figure 1-1. High-level SDN architecture.** SDN separates application intent, controller logic, and packet forwarding into distinct architectural layers. Northbound APIs expose controller capabilities to applications and automation systems. Southbound interfaces connect the controller to forwarding devices and infrastructure services.
+
 ```mermaid
 flowchart TB
     subgraph APP["Application Plane"]
@@ -141,7 +143,7 @@ flowchart TB
         D1["Switches"]
         D2["Routers"]
         D3["Firewalls"]
-        D4["SD-WAN edges"]
+        D4["WAN edge / tunnel endpoints"]
         D5["Virtual switches"]
     end
 
@@ -159,7 +161,11 @@ flowchart TB
 
 This diagram is intentionally generic. Different vendors implement the architecture differently, but most SDN systems include the same conceptual layers.
 
-## 6. Data Plane
+### 5.1 Data Plane
+
+![Control and data plane separation](../Assets/Chapter-01/sdn-control-data-plane-separation.png)
+
+**Figure 1-2. Control and data plane separation.** The controller coordinates forwarding behavior, but user traffic normally flows directly through switches, routers, firewalls, wireless infrastructure, virtual switches, or WAN edge devices. This distinction is critical when analyzing controller failure modes.
 
 The data plane is responsible for forwarding traffic. It performs the actual movement of packets or frames.
 
@@ -167,7 +173,7 @@ Examples:
 
 - Physical switches.
 - Routers.
-- SD-WAN edge devices.
+- WAN edge and tunnel endpoint devices.
 - Wireless access points.
 - Firewalls.
 - Load balancers.
@@ -187,23 +193,23 @@ Typical data plane functions:
 
 In an SDN architecture, the data plane may still run local protocols and local forwarding logic. The difference is that a controller or orchestrator influences how the forwarding tables, policies, tunnels, and security rules are created.
 
-### Practical Example
+#### Practical Data Plane View
 
-In Cisco SD-WAN, WAN Edge routers forward user traffic. They establish tunnels, classify traffic, enforce local policy, and forward packets. The controller does not forward user packets. The controller provides control information, policy, templates, and orchestration.
+In a campus or data center fabric, switches and routers continue to forward packets at line rate. The SDN controller does not normally forward user traffic itself; it programs or coordinates the forwarding behavior by distributing policy, endpoint information, overlay mappings, and configuration intent to the infrastructure.
 
-### Advantages
+#### Advantages
 
 - Existing high-performance ASIC forwarding is preserved.
 - Traffic forwarding can continue even if the controller is temporarily unavailable, depending on the architecture.
 - Policy can be pre-programmed into devices.
 
-### Risks
+#### Risks
 
 - If the controller programs incorrect policy, the data plane can enforce incorrect behavior at scale.
 - Troubleshooting requires understanding both controller state and device state.
 - Hardware support matters. Not all devices support the same encapsulation, telemetry, or policy features.
 
-## 7. Control Plane
+### 5.2 Control Plane
 
 The control plane determines how traffic should be forwarded. In traditional routing, each router runs protocols such as OSPF, IS-IS, or BGP to build routing tables. In SDN, some control decisions may be centralized, abstracted, or coordinated by a controller.
 
@@ -219,13 +225,13 @@ Control plane responsibilities may include:
 - Failure detection.
 - Consistency checking.
 
-### Centralized vs Logically Centralized
+#### Centralized vs Logically Centralized
 
 SDN literature often says "centralized control." In production, this usually means logically centralized, not physically single-box.
 
 Production SDN controllers are commonly deployed as clusters. The administrator experiences one control system, while the backend may consist of multiple nodes for high availability, scale, and disaster recovery.
 
-### Important Design Question
+#### Important Design Question
 
 For any SDN solution, ask:
 
@@ -238,7 +244,7 @@ For any SDN solution, ask:
 - What is the backup and restore model?
 - What is the disaster recovery model?
 
-## 8. Management Plane
+### 5.3 Management Plane
 
 Many discussions simplify SDN into control plane and data plane. For production design, the management plane must be considered separately.
 
@@ -257,7 +263,7 @@ The management plane includes:
 
 In SDN, the management plane becomes more critical because the controller becomes a high-value operational system. If an attacker gains administrator access to the controller, the attacker may be able to change policy across the fabric.
 
-### Management Plane Best Practices
+#### Management Plane Best Practices
 
 - Use dedicated management networks where possible.
 - Enforce MFA and RBAC.
@@ -267,7 +273,7 @@ In SDN, the management plane becomes more critical because the controller become
 - Monitor controller health and audit logs.
 - Separate admin roles: network operator, security operator, auditor, automation account.
 
-## 9. Application Plane
+### 5.4 Application Plane
 
 The application plane represents business logic and operational workflows above the controller.
 
@@ -279,7 +285,7 @@ Examples:
 - A monitoring platform that consumes telemetry and raises incidents.
 - A CMDB/source of truth that defines expected devices, sites, and circuits.
 
-### Example Workflow
+#### Workflow
 
 ```mermaid
 sequenceDiagram
@@ -302,7 +308,7 @@ sequenceDiagram
 
 This is where SDN becomes operationally powerful. Instead of manually configuring each device, the organization builds a controlled workflow around intent, validation, deployment, and evidence.
 
-## 10. Northbound and Southbound Interfaces
+### 5.5 Northbound and Southbound Interfaces
 
 ```mermaid
 flowchart LR
@@ -325,7 +331,7 @@ flowchart LR
         S1["Switch"]
         S2["Router"]
         S3["Firewall"]
-        S4["SD-WAN edge"]
+        S4["WAN edge"]
         S5["Virtual switch"]
     end
 
@@ -341,7 +347,7 @@ flowchart LR
     C2 -->|"Policy programming"| S3
 ```
 
-### Northbound API
+#### Northbound API
 
 Northbound APIs expose controller capabilities to applications, automation platforms, and operations workflows.
 
@@ -358,7 +364,7 @@ Common use cases:
 
 REST APIs are common because they are easy to consume from tools such as Postman, Python, Ansible, Terraform, and ITSM platforms.
 
-### Southbound API
+#### Southbound API
 
 Southbound interfaces connect the controller to network devices.
 
@@ -373,11 +379,11 @@ Possible southbound mechanisms:
 - Vendor-specific protocols.
 - BGP/EVPN/LISP/control sessions depending on architecture.
 
-### Technical Note
+#### Technical Note
 
 Do not assume northbound and southbound APIs use the same protocol. A controller may expose REST northbound while using NETCONF, CLI, gNMI, OpenFlow, or proprietary mechanisms southbound.
 
-## 11. OpenFlow and the Historical SDN Model
+### 5.6 OpenFlow and the Historical SDN Model
 
 OpenFlow is often associated with early SDN because it gave controllers a way to program forwarding behavior in switches.
 
@@ -399,7 +405,7 @@ flowchart TB
     I --> A
 ```
 
-Example match fields:
+Common match fields:
 
 - Source MAC.
 - Destination MAC.
@@ -410,7 +416,7 @@ Example match fields:
 - Protocol.
 - Ingress port.
 
-Example actions:
+Common actions:
 
 - Forward to port.
 - Drop.
@@ -418,14 +424,14 @@ Example actions:
 - Push/pop VLAN.
 - Send to controller.
 
-### Advantages of OpenFlow
+#### Advantages of OpenFlow
 
 - Excellent for teaching separation of control and data plane.
 - Allows explicit flow programming.
 - Useful in research and lab environments.
 - Works well with Mininet and Open vSwitch for learning.
 
-### Limitations in Enterprise Production
+#### Limitations in Enterprise Production
 
 - Many enterprise SDN systems do not rely primarily on OpenFlow.
 - Hardware support and scale vary.
@@ -436,9 +442,13 @@ Key message for learners:
 
 > OpenFlow is one possible southbound protocol. SDN is a broader architectural model.
 
-## 12. Underlay and Overlay
+### 5.7 Underlay and Overlay
 
 Underlay and overlay are central concepts in modern SDN.
+
+![SDN underlay and overlay](../Assets/Chapter-01/sdn-underlay-overlay.png)
+
+**Figure 1-3. Underlay and overlay relationship.** The physical underlay provides IP reachability and transport stability. The logical overlay provides segmentation, tenant separation, mobility, and policy abstraction across that transport.
 
 ```mermaid
 flowchart TB
@@ -450,7 +460,7 @@ flowchart TB
     end
 
     subgraph Tunnel["Encapsulation Layer"]
-        T1["VXLAN / GRE / IPsec / LISP / SD-WAN tunnel"]
+        T1["VXLAN / GRE / IPsec / LISP / WAN overlay tunnel"]
     end
 
     subgraph Underlay["Underlay Network"]
@@ -465,7 +475,7 @@ flowchart TB
     Tunnel --> Underlay
 ```
 
-### Underlay
+#### Underlay
 
 The underlay is the transport network that provides basic reachability between fabric nodes or tunnel endpoints.
 
@@ -483,10 +493,10 @@ Examples:
 
 - Leaf-spine IP fabric in a data center.
 - Routed campus core and distribution.
-- MPLS/Internet/LTE transport in SD-WAN.
+- MPLS, Internet, LTE/5G, or private WAN transport for WAN overlays.
 - Cloud VPC/VNet network infrastructure.
 
-### Overlay
+#### Overlay
 
 The overlay is the logical network built on top of the underlay.
 
@@ -506,9 +516,9 @@ Common overlay technologies:
 - LISP.
 - GRE.
 - IPsec.
-- SD-WAN tunnels.
+- WAN overlay tunnels.
 
-### Troubleshooting Principle
+#### Troubleshooting Principle
 
 Always validate underlay before overlay.
 
@@ -523,7 +533,7 @@ If overlay tunnels are down, do not immediately assume a controller or policy is
 - Time synchronization.
 - Control connections.
 
-## 13. Fabric
+### 5.8 Fabric
 
 A fabric is a network domain operated as a coordinated system rather than as isolated devices.
 
@@ -542,10 +552,10 @@ Examples:
 
 - Cisco ACI fabric for data center.
 - Cisco SD-Access fabric for campus.
-- Cisco Catalyst SD-WAN overlay fabric.
+- WAN overlay fabric.
 - EVPN-VXLAN fabric.
 
-### Fabric Boundary
+#### Fabric Boundary
 
 Every fabric has a boundary. Boundary design is critical because this is where SDN meets non-SDN or another SDN domain.
 
@@ -568,7 +578,7 @@ flowchart LR
         FB["Fabric border"]
     end
 
-    subgraph WAN["SD-WAN Fabric"]
+    subgraph WAN["WAN Overlay Domain"]
         WE["WAN edge"]
         T["Overlay tunnels"]
     end
@@ -587,7 +597,7 @@ flowchart LR
 
 In real designs, many incidents happen at fabric boundaries because routing, policy, segmentation, NAT, and firewall behavior meet there.
 
-## 14. Policy-Based Networking
+### 5.9 Policy-Based Networking
 
 Traditional networks often express policy through device-level constructs:
 
@@ -605,10 +615,10 @@ SDN systems try to express policy closer to business intent:
 - Guest devices can access Internet only.
 - OT systems can reach historian servers but not corporate user networks.
 - Cameras can send video to recording servers only.
-- Branch voice traffic prefers low-latency transport.
-- SaaS traffic may use direct Internet access.
+- Voice traffic prefers low-latency transport.
+- SaaS traffic may use direct Internet or cloud security access.
 
-### Policy Abstraction Diagram
+#### Policy Abstraction Diagram
 
 ```mermaid
 flowchart TB
@@ -617,7 +627,7 @@ flowchart TB
     P --> T2["SGT / security group"]
     P --> T3["ACL / contract"]
     P --> T4["Firewall rule"]
-    P --> T5["SD-WAN app policy"]
+    P --> T5["WAN application policy"]
     P --> T6["QoS policy"]
     T1 --> D["Device configuration and enforcement"]
     T2 --> D
@@ -627,7 +637,7 @@ flowchart TB
     T6 --> D
 ```
 
-### Example Policy Matrix
+#### Policy Matrix
 
 | Source Segment | Destination Segment | Required Access | Enforcement Example |
 |---|---|---|---|
@@ -639,14 +649,14 @@ flowchart TB
 | IoT | Management | Deny | Fabric or firewall policy |
 | Network admin | Management | Allow SSH/HTTPS | RBAC + firewall + TACACS |
 
-### Benefits
+#### Benefits
 
 - Policy is easier to discuss with security and business teams.
 - Segmentation can become more consistent across sites.
 - Repeated policy can be applied at scale.
 - Policy changes can be audited and automated.
 
-### Risks
+#### Risks
 
 - High-level policy may hide low-level dependencies.
 - Poorly designed groups can become too broad.
@@ -654,7 +664,7 @@ flowchart TB
 - Integration between SDN domains may require policy translation.
 - Controller GUI may show intended policy while device-level enforcement differs due to deployment failure.
 
-## 15. Intent-Based Networking
+### 5.10 Intent-Based Networking
 
 Intent-based networking is a higher-level evolution of SDN. Instead of telling the network every low-level command, the operator declares the desired outcome.
 
@@ -684,13 +694,17 @@ flowchart LR
     A --> M
 ```
 
-### Reality Check
+#### Reality Check
 
 Most production networks are not fully autonomous. They use partial intent-based workflows. Human approval, change windows, and validation remain important.
 
-## 16. Automation in SDN
+### 5.11 Automation in SDN
 
 Automation is often the first practical step toward SDN transformation.
+
+![Intent API assurance workflow](../Assets/Chapter-01/sdn-intent-api-assurance-workflow.png)
+
+**Figure 1-4. Intent, API deployment, and assurance workflow.** A mature SDN operating model starts with business intent and source-of-truth data, validates the requested change, uses APIs or automation workflows to deploy through the controller, and then uses telemetry and assurance to verify actual state.
 
 Automation maturity levels:
 
@@ -704,7 +718,7 @@ Automation maturity levels:
 | 5 | Intent-driven | Declare desired state; system translates |
 | 6 | Closed-loop | Telemetry triggers remediation or recommendation |
 
-### Good Automation Requires More Than Scripts
+#### Good Automation Requires More Than Scripts
 
 Required elements:
 
@@ -720,7 +734,7 @@ Required elements:
 - Approval workflow.
 - Test environment.
 
-### Example: Branch Site Creation
+#### Branch Site Onboarding Workflow
 
 Traditional approach:
 
@@ -738,7 +752,7 @@ SDN/automation approach:
 - Monitoring is automatically updated.
 - Validation tests are attached to the change ticket.
 
-## 17. Telemetry and Assurance
+### 5.12 Telemetry and Assurance
 
 Traditional monitoring often relies on polling:
 
@@ -760,7 +774,7 @@ SDN environments can provide richer telemetry:
 - Path tracing.
 - Event correlation.
 
-### Telemetry Flow
+#### Telemetry Flow
 
 ```mermaid
 flowchart LR
@@ -772,25 +786,25 @@ flowchart LR
     A --> API["API for dashboards and automation"]
 ```
 
-### Benefits
+#### Benefits
 
 - Faster troubleshooting.
 - Better baseline of normal behavior.
 - Easier compliance reporting.
 - Improved visibility into fabric-wide state.
 
-### Risks
+#### Risks
 
 - Telemetry volume can be large.
 - Health scores can hide detail.
 - Operators may trust dashboards without validating device state.
 - Time synchronization and data quality matter.
 
-## 18. Security Implications of SDN
+### 5.13 Security Implications of SDN
 
 SDN improves security by enabling centralized segmentation and policy, but it also introduces new attack surfaces.
 
-### Security Benefits
+#### Security Benefits
 
 - Centralized policy definition.
 - Consistent segmentation.
@@ -800,7 +814,7 @@ SDN improves security by enabling centralized segmentation and policy, but it al
 - Integration with security platforms.
 - Easier quarantine or dynamic policy response.
 
-### New Risks
+#### New Risks
 
 - Controller compromise can have broad impact.
 - API token leakage can enable unauthorized changes.
@@ -809,7 +823,7 @@ SDN improves security by enabling centralized segmentation and policy, but it al
 - Weak RBAC can allow excessive administrative access.
 - Controller backup files may contain sensitive policy or credentials.
 
-### Security Controls
+#### Security Controls
 
 - MFA for administrators.
 - RBAC with least privilege.
@@ -822,7 +836,7 @@ SDN improves security by enabling centralized segmentation and policy, but it al
 - Change approval and validation.
 - Regular policy review.
 
-## 19. Cisco SDN Solution Mapping
+## 6. Cisco SDN Solution Mapping
 
 Cisco has several SDN-oriented architectures, each optimized for a different domain.
 
@@ -830,13 +844,13 @@ Cisco has several SDN-oriented architectures, each optimized for a different dom
 |---|---|---|---|
 | Data center | Cisco ACI | Cisco APIC / Nexus Dashboard ecosystem | Data center fabric, application policy, segmentation |
 | Campus | Cisco SD-Access | Cisco Catalyst Center with Cisco ISE | Wired/wireless campus fabric, identity-based segmentation |
-| WAN | Cisco Catalyst SD-WAN | SD-WAN Manager and controllers | WAN overlay, application-aware routing, branch connectivity |
-| Branch / lean IT | Cisco Meraki | Meraki Dashboard | Cloud-managed branch, wireless, security, SD-WAN |
-| Cross-domain | Cisco Validated designs and integrations | Multiple controllers | Integration of ACI, SD-Access, SD-WAN, security |
+| WAN overlay | Cisco Catalyst SD-WAN | SD-WAN Manager and controllers | WAN overlay, application-aware routing, branch connectivity |
+| Cloud-managed branch | Cisco Meraki | Meraki Dashboard | Cloud-managed branch, wireless, security, and WAN services |
+| Cross-domain | Cisco Validated designs and integrations | Multiple controllers | Integration of data center, campus, WAN, and security domains |
 
-Cisco describes SDN as an architecture that centralizes management by abstracting the control plane from forwarding functions. Cisco ACI is positioned as an SDN solution for data centers. Cisco SD-Access uses Catalyst Center to automate and apply policy across wired and wireless campus fabrics. Cisco Validated guidance includes cross-architectural integration involving Catalyst Center for SD-Access, SD-WAN Manager for SD-WAN, APIC for ACI, and firewall management platforms.
+Cisco describes SDN as an architecture that centralizes management by abstracting the control plane from forwarding functions. Cisco ACI is positioned as an SDN solution for data centers. Cisco SD-Access uses Catalyst Center to automate and apply policy across wired and wireless campus fabrics. Cisco Validated guidance includes cross-architectural integration involving Catalyst Center for SD-Access, SD-WAN Manager for WAN overlays, APIC for ACI, and firewall management platforms.
 
-## 20. Cisco ACI Deep Dive Overview
+### Cisco ACI Deep Dive Overview
 
 Cisco ACI is a data center SDN architecture based on an application-centric policy model.
 
@@ -887,7 +901,7 @@ flowchart TB
     DB --> L3
 ```
 
-### ACI Policy Example
+#### ACI Policy Example
 
 Application tiers:
 
@@ -904,7 +918,7 @@ Policy:
 
 Traditional design may implement this with VLANs, ACLs, firewall zones, and VRFs. ACI expresses it through EPGs and contracts.
 
-### Strengths
+#### Strengths
 
 - Strong data center fabric model.
 - Good fit for application-tier segmentation.
@@ -913,7 +927,7 @@ Traditional design may implement this with VLANs, ACLs, firewall zones, and VRFs
 - API-driven operations.
 - Supports automation and multi-fabric/multicloud operational models through the broader Cisco ecosystem.
 
-### Design Considerations
+#### Design Considerations
 
 - Requires good application dependency mapping.
 - EPG design can become complex if every exception becomes a new group.
@@ -921,7 +935,7 @@ Traditional design may implement this with VLANs, ACLs, firewall zones, and VRFs
 - Brownfield migration requires careful L2/L3 boundary planning.
 - Integration with firewalls and external networks must be designed deliberately.
 
-## 21. Cisco SD-Access Deep Dive Overview
+### Cisco SD-Access Deep Dive Overview
 
 Cisco SD-Access applies SDN concepts to campus and branch LAN/WLAN environments.
 
@@ -958,7 +972,7 @@ flowchart TB
     end
 
     subgraph External["External Networks"]
-        WAN["SD-WAN / WAN"]
+        WAN["WAN / External Network"]
         DC["Data Center"]
         INET["Internet"]
     end
@@ -979,7 +993,7 @@ flowchart TB
     FB --> INET
 ```
 
-### SD-Access Policy Example
+#### SD-Access Policy Example
 
 Segments:
 
@@ -998,7 +1012,7 @@ Policy examples:
 - OT can reach historian and jump host only.
 - Management can access infrastructure devices.
 
-### Strengths
+#### Strengths
 
 - Identity-based segmentation.
 - Consistent wired and wireless policy.
@@ -1006,7 +1020,7 @@ Policy examples:
 - Catalyst Center provides automation and assurance.
 - Strong fit for campus modernization and zero-trust access initiatives.
 
-### Design Considerations
+#### Design Considerations
 
 - Requires identity design, often with Cisco ISE.
 - Brownfield campus migration needs careful device readiness assessment.
@@ -1014,9 +1028,9 @@ Policy examples:
 - Policy matrix must be designed before broad rollout.
 - Integration with non-fabric areas must be planned carefully.
 
-## 22. Cisco Catalyst SD-WAN as a Practical SDN Example
+### WAN Overlay Reference: Cisco Catalyst SD-WAN
 
-Cisco Catalyst SD-WAN is a practical example of SDN in the WAN domain. Even if learners have not worked with SD-WAN before, the architecture is useful because it clearly shows underlay/overlay separation, controller-based policy, centralized templates, secure tunnels, and application-aware routing.
+WAN overlays are one implementation pattern within SDN. Cisco Catalyst SD-WAN is used here as a reference architecture because it clearly illustrates underlay/overlay separation, controller-based policy, centralized templates, secure tunnels, and application-aware routing.
 
 ```mermaid
 flowchart TB
@@ -1055,7 +1069,7 @@ flowchart TB
     CL --> INET
 ```
 
-SD-WAN demonstrates:
+The WAN overlay model demonstrates:
 
 - Underlay and overlay separation.
 - Controller-based policy.
@@ -1066,7 +1080,7 @@ SD-WAN demonstrates:
 - Centralized monitoring.
 - API-driven management.
 
-### SD-WAN Policy Example
+#### WAN Overlay Policy Walkthrough
 
 Business requirement:
 
@@ -1083,14 +1097,14 @@ SDN interpretation:
 - Edges enforce forwarding.
 - Telemetry validates SLA.
 
-### Strengths
+#### Strengths
 
 - Strong business case: WAN cost, agility, application experience.
 - Excellent example of overlay networking.
 - Mature operational model for branch connectivity.
 - Useful first SDN transformation domain.
 
-### Design Considerations
+#### Design Considerations
 
 - Transport quality still matters.
 - Local Internet breakout changes security architecture.
@@ -1098,7 +1112,7 @@ SDN interpretation:
 - Cloud/SaaS routing requires careful DNS and security design.
 - Controller reachability and certificate lifecycle matter.
 
-## 23. Cisco Meraki SD-WAN and Cloud-Managed Networking
+### Cloud-Managed Branch Use Case: Cisco Meraki
 
 Meraki represents a cloud-managed approach to SDN-style operations.
 
@@ -1121,79 +1135,35 @@ Considerations:
 
 - Less low-level control than some enterprise platforms.
 - Cloud dashboard dependency must be understood.
-- Feature depth and customization may differ from Catalyst SD-WAN.
+- Feature depth and customization may differ from enterprise WAN overlay platforms.
 - Governance and admin RBAC remain important.
 
-## 24. Multi-Domain SDN Architecture
+## 7. Industry SDN Solution Comparison by Market Segment
 
-Large enterprises rarely use one SDN domain for everything. A realistic architecture may combine:
+The SDN market is not a single product category. Different vendors compete in different domains: data center fabric, campus automation, SD-WAN, cloud networking, network virtualization, and assurance. Cisco solutions should therefore be compared by segment, not as one monolithic "SDN product."
 
-- ACI in the data center.
-- SD-Access in campus.
-- Catalyst SD-WAN across WAN.
-- Meraki for smaller branches.
-- Public cloud networking.
-- Firewalls and security service edge.
-- ITSM and source of truth.
+### Data Center SDN and Fabric Automation
 
-```mermaid
-flowchart TB
-    subgraph Ops["Operations and Governance"]
-        ITSM["ITSM / Change"]
-        SOT["Source of Truth"]
-        SIEM["SIEM / SOAR"]
-        Auto["Automation Platform"]
-    end
+| Segment | Cisco Position | Other Industry Solutions | Practical Comparison |
+|---|---|---|---|
+| Data center fabric and policy | Cisco ACI with APIC, leaf-spine fabric, tenants, VRFs, bridge domains, EPGs, contracts | VMware NSX, Juniper Apstra, Arista CloudVision with EVPN/VXLAN designs | ACI provides an integrated fabric and policy model. NSX focuses strongly on software network virtualization and distributed security for virtualized workloads. Apstra emphasizes intent-based, multi-vendor data center fabric operations. CloudVision emphasizes Arista EOS automation, state streaming, and telemetry. |
+| Data center assurance | Nexus Dashboard ecosystem, ACI telemetry, policy visibility | Juniper Apstra assurance, Arista CloudVision telemetry, VMware NSX operations integrations | Cisco is strongest when the data center is built around Cisco fabric and policy objects. Apstra is attractive when multi-vendor fabric intent and validation are priorities. CloudVision is attractive in Arista environments with strong telemetry requirements. |
 
-    subgraph Controllers["Domain Controllers"]
-        APIC["ACI APIC"]
-        CC["Catalyst Center"]
-        SDW["SD-WAN Manager"]
-        FW["Firewall Manager"]
-        Cloud["Cloud Controller / API"]
-    end
+### Campus and Branch Access
 
-    subgraph Domains["Network Domains"]
-        DC["Data Center Fabric"]
-        Campus["Campus Fabric"]
-        WAN["WAN Overlay"]
-        Internet["Internet / SSE"]
-        PublicCloud["Public Cloud"]
-    end
+| Segment | Cisco Position | Other Industry Solutions | Practical Comparison |
+|---|---|---|---|
+| Campus automation and assurance | Cisco Catalyst Center, SD-Access, Catalyst switching, Cisco ISE integration | HPE Aruba Central, Juniper Mist AI, ExtremeCloud IQ | Catalyst Center and SD-Access focus on Cisco campus fabric, automation, and identity-based segmentation. Aruba Central and Juniper Mist are strong cloud-managed campus platforms with AI/assurance features. ExtremeCloud IQ provides cloud management across wired, wireless, and SD-WAN-oriented operations. |
+| Identity-based access | Cisco ISE with SGT and TrustSec-style policy integration | Aruba ClearPass, Juniper Access Assurance, cloud NAC options | Cisco ISE is central to SD-Access identity and group-based policy. Competing solutions may be stronger in heterogeneous access environments depending on installed base and operations model. |
 
-    ITSM --> Auto
-    SOT --> Auto
-    SIEM --> Auto
-    Auto --> APIC
-    Auto --> CC
-    Auto --> SDW
-    Auto --> FW
-    Auto --> Cloud
+### WAN Overlay and SD-WAN
 
-    APIC --> DC
-    CC --> Campus
-    SDW --> WAN
-    FW --> Internet
-    Cloud --> PublicCloud
-```
+| Segment | Cisco Position | Other Industry Solutions | Practical Comparison |
+|---|---|---|---|
+| Enterprise SD-WAN | Cisco Catalyst SD-WAN, Cisco Meraki SD-WAN | Fortinet Secure SD-WAN, Palo Alto Prisma SD-WAN, HPE Aruba Networking EdgeConnect, VMware/Arista VeloCloud SD-WAN, Versa | Cisco Catalyst SD-WAN is strong for enterprise WAN overlays, routing policy, templates, and Cisco ecosystem integration. Meraki is strong for cloud-managed branch simplicity. Fortinet emphasizes security and SD-WAN convergence in FortiOS. Prisma SD-WAN aligns with Zero Trust Branch and Prisma SASE. EdgeConnect emphasizes WAN optimization, centralized orchestration, and business intent overlays. VeloCloud is a well-known cloud-orchestrated SD-WAN architecture. |
+| SASE/SSE integration | Cisco Secure Access and third-party integrations with Catalyst SD-WAN | Palo Alto Prisma Access, Fortinet, HPE Aruba integrations, Netskope, Zscaler, Cato | SD-WAN selection increasingly depends on how branch traffic is secured, not only how tunnels are built. Evaluate security service integration, tunnel automation, identity, logging, and operations workflows. |
 
-### Cross-Domain Challenges
-
-- Policy consistency.
-- Identity propagation.
-- Route exchange.
-- Segmentation mapping.
-- Firewall insertion.
-- Overlapping IP address spaces.
-- Change coordination.
-- End-to-end troubleshooting.
-- Ownership between network, security, server, cloud, and OT teams.
-
-### Practical Recommendation
-
-Do not try to solve every domain on Day 1 of transformation. Pick a domain with clear business value and manageable scope, then design integration points carefully.
-
-## 25. Open-Source SDN Platforms for Learning
+## 8. Open-Source SDN Platforms for Learning
 
 Open-source tools are extremely useful for understanding SDN principles.
 
@@ -1205,7 +1175,7 @@ Open-source tools are extremely useful for understanding SDN principles.
 | OpenDaylight | SDN controller platform | Explore controller architecture |
 | ONOS | Network operating system | Study carrier/service-provider SDN concepts |
 
-### Why Use Mininet on Day 1
+### Why Use Mininet in Chapter 1
 
 Mininet allows learners to see:
 
@@ -1218,135 +1188,7 @@ Mininet allows learners to see:
 
 This makes abstract SDN concepts visible.
 
-## 26. Deep-Dive Example: Packet Walk in SDN
-
-Scenario:
-
-- User in Campus Segment `Corp-Users`.
-- Application in Data Center Segment `ERP-App`.
-- Traffic crosses campus fabric, WAN overlay, and data center fabric.
-
-```mermaid
-sequenceDiagram
-    participant Host as User Host
-    participant FE as SD-Access Fabric Edge
-    participant FB as Fabric Border
-    participant WE as SD-WAN Edge
-    participant DCE as DC WAN Edge
-    participant Leaf as ACI Leaf
-    participant App as ERP Server
-
-    Host->>FE: Send packet to ERP
-    FE->>FE: Classify endpoint identity and segment
-    FE->>FB: Encapsulate across campus fabric
-    FB->>WE: Forward to WAN edge
-    WE->>WE: Apply SD-WAN app/SLA policy
-    WE->>DCE: Send through selected overlay tunnel
-    DCE->>Leaf: Hand off to data center fabric
-    Leaf->>Leaf: Enforce EPG/contract policy
-    Leaf->>App: Deliver packet to ERP server
-```
-
-Troubleshooting checkpoints:
-
-- Is the user correctly authenticated?
-- Is the endpoint in the correct segment/group?
-- Is campus fabric encapsulation working?
-- Is border routing correct?
-- Is SD-WAN policy selecting the expected path?
-- Are tunnels up?
-- Is data center routing correct?
-- Does ACI contract allow the traffic?
-- Is firewall policy involved?
-- Is DNS resolving to the expected destination?
-
-## 27. SDN Design Trade-Offs
-
-| Decision | Benefit | Trade-Off |
-|---|---|---|
-| Centralized policy | Consistency and scale | Controller becomes operationally critical |
-| Overlay networking | Flexibility and segmentation | More encapsulation and troubleshooting layers |
-| API automation | Speed and repeatability | Requires governance and testing |
-| Identity-based access | Better security | Depends on identity data quality |
-| Fabric abstraction | Simpler operations at scale | Engineers must learn new object models |
-| Multi-domain SDN | Best tool for each domain | Integration complexity |
-| Closed-loop automation | Faster response | Risk of automated incorrect action |
-
-## 28. SDN Migration Strategy for Brownfield Networks
-
-Most enterprises will migrate gradually.
-
-```mermaid
-flowchart LR
-    A["Assess current network"] --> B["Standardize inventory, naming, IP plan"]
-    B --> C["Improve visibility and backups"]
-    C --> D["Automate low-risk tasks"]
-    D --> E["Pilot one SDN domain"]
-    E --> F["Validate operations and security"]
-    F --> G["Expand by site or function"]
-    G --> H["Integrate domains"]
-    H --> I["Optimize and automate deeper workflows"]
-```
-
-### Phase 1: Assessment
-
-Collect:
-
-- Device inventory.
-- Software versions.
-- Hardware capability.
-- Topology.
-- IP plan.
-- VLAN/VRF mapping.
-- Routing design.
-- Firewall policies.
-- WAN circuits.
-- Application dependencies.
-- Existing monitoring.
-- Known pain points.
-
-### Phase 2: Standardization
-
-Before SDN, clean up:
-
-- Naming conventions.
-- Site codes.
-- IP address management.
-- VLAN and VRF standards.
-- Device role definitions.
-- Logging and NTP.
-- AAA.
-- Backup process.
-
-### Phase 3: First Automation
-
-Start with low-risk tasks:
-
-- Configuration backup.
-- Compliance checks.
-- Inventory collection.
-- Interface description standardization.
-- NTP/SNMP/syslog deployment.
-- Reporting.
-
-### Phase 4: Pilot
-
-Good pilot candidates:
-
-- A new branch.
-- A lab data center pod.
-- A limited campus building.
-- Guest network segmentation.
-- A non-critical application zone.
-
-Avoid starting with:
-
-- Core production data center migration.
-- OT systems with unclear dependencies.
-- Highly customized legacy sites.
-- Environments with poor documentation.
-
-## 29. Advantages and Disadvantages of SDN
+## 9. Advantages and Disadvantages of SDN
 
 ### Advantages
 
@@ -1392,87 +1234,7 @@ Avoid starting with:
 - No security model for API access.
 - Team not ready for automation workflows.
 
-## 30. Instructor Guidance for Day 1
-
-Recommended teaching flow:
-
-1. Introduce Cisco SD-WAN as a concrete WAN-domain SDN example.
-2. Abstract the SD-WAN architecture into SDN concepts: controller, edge, overlay, underlay, policy, telemetry.
-3. Generalize to campus, data center, cloud, and security.
-4. Introduce OpenFlow only as a learning model, not as the definition of SDN.
-5. Use diagrams to separate architecture from product names.
-6. End with brownfield migration thinking.
-
-Suggested emphasis:
-
-- Experienced engineers may resist SDN if it sounds like marketing. Anchor every concept in an operational problem.
-- Keep repeating: SDN does not remove network fundamentals.
-- When discussing controller-based networking, always discuss failure mode.
-- When discussing automation, always discuss validation and rollback.
-- When discussing segmentation, always ask who owns the policy matrix.
-
-## 31. Class Discussion Exercises
-
-### Exercise 1: Map Cisco SD-WAN to SDN Layers
-
-Ask learners to map:
-
-- WAN Edge.
-- SD-WAN Manager.
-- Controller/control connection.
-- Templates.
-- Centralized policy.
-- Localized policy.
-- Application-aware routing.
-- Overlay tunnel.
-- Transport underlay.
-
-To:
-
-- Data plane.
-- Control plane.
-- Management plane.
-- Application plane.
-- Northbound API.
-- Southbound/control interface.
-- Underlay.
-- Overlay.
-
-### Exercise 2: Brownfield SDN Readiness
-
-Scenario:
-
-An enterprise has 50 campus switches, 10 WAN routers, 2 firewalls, several VLANs per site, inconsistent ACLs, and limited documentation. Leadership wants to "move to SDN" within 12 months.
-
-Questions:
-
-- What should be assessed first?
-- Which domain should be piloted first: WAN, campus, or data center?
-- What should remain traditional during the first phase?
-- Which tasks should be automated first?
-- What metrics prove the SDN project is successful?
-
-### Exercise 3: Policy Matrix Design
-
-Groups:
-
-- Corporate users.
-- Guest.
-- IoT.
-- Camera.
-- OT.
-- Server.
-- Management.
-
-Ask learners to define:
-
-- Allowed flows.
-- Denied flows.
-- Enforcement point.
-- Logging requirement.
-- Exception process.
-
-## 32. Review Questions
+## 10. Review Questions
 
 1. Why is SDN an architecture rather than a single technology?
 2. What is the difference between data plane and control plane?
@@ -1481,44 +1243,13 @@ Ask learners to define:
 5. Why is OpenFlow not equal to SDN?
 6. Why must the underlay be stable before overlay troubleshooting?
 7. What happens if a controller fails? What depends on the specific architecture?
-8. How does Cisco SD-WAN demonstrate SDN principles?
+8. How does a WAN overlay demonstrate SDN principles?
 9. What is the difference between VLAN-based segmentation and policy-based segmentation?
 10. Why is source of truth important for network automation?
 11. What are the security risks of controller-based networking?
-12. Which enterprise domain is usually a good candidate for a first SDN pilot, and why?
+12. Which SDN concepts should be understood before moving into design?
 
-## 33. Preparation for Day 1 Lab
-
-The Day 1 lab should use Mininet and Open vSwitch to make SDN visible.
-
-Lab goals:
-
-- Build a small virtual network.
-- Start an SDN controller.
-- Observe host connectivity.
-- Inspect Open vSwitch flow tables.
-- Add or remove flows.
-- Observe behavior when controller connectivity changes.
-
-Recommended tools:
-
-- Ubuntu VM.
-- Mininet.
-- Open vSwitch.
-- Python 3.
-- Ryu or simple controller.
-- Wireshark optional.
-
-Lab concepts to connect back to theory:
-
-- Control plane vs data plane.
-- Flow table.
-- Controller-to-switch interaction.
-- Default forwarding behavior.
-- Failure behavior.
-- Why production SDN uses richer policy models than raw flow entries.
-
-## 34. Key Takeaways
+## 11. Key Takeaways
 
 - SDN is a way to make networking more programmable, policy-driven, and centrally coordinated.
 - SDN is not the same as OpenFlow.
@@ -1528,10 +1259,9 @@ Lab concepts to connect back to theory:
 - APIs are operational interfaces, not optional add-ons.
 - Automation without validation can create outages faster.
 - Segmentation is one of the strongest SDN use cases.
-- Cisco SD-WAN is a practical WAN-domain SDN example.
-- Enterprise SDN transformation should be phased, evidence-based, and tied to business problems.
+- WAN overlays are practical SDN examples, but they are only one part of the broader SDN architecture.
 
-## 35. References
+## 12. References
 
 - Cisco, Software-Defined Networking overview: https://www.cisco.com/c/en/us/solutions/software-defined-networking/overview.html
 - Cisco, Cisco ACI solution overview: https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/solution-overview-c22-741487.html
@@ -1540,6 +1270,15 @@ Lab concepts to connect back to theory:
 - Cisco, Catalyst SD-WAN: https://www.cisco.com/site/us/en/solutions/networking/sdwan/catalyst/index.html
 - Cisco, Common Policy Integration Guide: https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/catalyst-center/cisco-validated-solution-profiles/common-policy-integration-guide.html
 - Cisco, ACI and Catalyst SD-WAN integration: https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-xe-17/policies-book-xe/integration-with-Cisco-ACI.html
+- Broadcom, VMware NSX overview: https://techdocs.broadcom.com/us/en/vmware-cis/nsx/vmware-nsx/4-1/installation-guide/overview-of-nsx.html
+- Juniper, Apstra Data Center Director: https://www.juniper.net/us/en/products/network-automation/apstra-data-center-director.html
+- Arista, CloudVision: https://www.arista.com/en/products/eos/eos-cloudvision
+- HPE, Aruba Central / Networking portfolio: https://www.hpe.com/us/en/networking.html
+- Juniper, Mist AI documentation: https://www.juniper.net/documentation/product/us/en/mist/
+- Extreme Networks, ExtremeCloud IQ: https://www.extremenetworks.com/products/cloud-based-management/extremecloud-iq/extremecloud-iq
+- Fortinet, Secure SD-WAN: https://www.fortinet.com/products/sd-wan
+- Palo Alto Networks, Prisma SD-WAN: https://www.paloaltonetworks.com/sase/sd-wan
+- HPE, Aruba Networking EdgeConnect SD-WAN: https://www.hpe.com/us/en/aruba-edgeconnect-sd-wan.html
 - Open Networking Foundation: https://opennetworking.org/
 - Open vSwitch documentation: https://docs.openvswitch.org/
 - Mininet documentation: http://mininet.org/

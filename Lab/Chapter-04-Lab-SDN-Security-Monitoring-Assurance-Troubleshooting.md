@@ -1,8 +1,8 @@
-# Day 4 Lab - SDN Security, Monitoring, Assurance, and Troubleshooting
+# Chapter 4 Lab - SDN Security, Monitoring, Assurance, and Troubleshooting
 
 ## 1. Lab Purpose
 
-Day 4 theory focused on security, segmentation, monitoring, assurance, AI/ML operations, troubleshooting, incident response, and RCA in SDN environments.
+Chapter 4 theory focused on security, segmentation, monitoring, assurance, AI/ML operations, troubleshooting, incident response, and RCA in SDN environments.
 
 This lab turns those topics into practical scenario exercises.
 
@@ -30,7 +30,7 @@ Suggested timing:
 
 | Section | Time |
 |---|---:|
-| Instructor briefing | 15 min |
+| Workshop briefing | 15 min |
 | Exercise 1 | 60 min |
 | Exercise 2 | 45 min |
 | Exercise 3 | 90 min |
@@ -71,7 +71,7 @@ Use real or sandbox platforms:
 - Cisco SD-WAN Manager sandbox.
 - Cisco ACI APIC sandbox.
 - EVE-NG/GNS3/CML with virtual routers/firewalls.
-- Mock API from Day 3 extended with health/fault states.
+- Mock API from Chapter 3 extended with health/fault states.
 
 Best for:
 
@@ -209,7 +209,7 @@ Complete the table:
 
 Draw where policy is enforced.
 
-Example:
+Scenario:
 
 ```mermaid
 flowchart LR
@@ -715,7 +715,7 @@ Prevention:
 
 ## 10. Optional Practical - Build a Simple Health Check Script
 
-If using the Day 3 mock API server, students can write a simple health check.
+If using the Chapter 3 mock API server, students can write a simple health check.
 
 Example script `health_check.py`:
 
@@ -747,7 +747,7 @@ Discussion:
 
 - A real health check should include authentication, controller services, device reachability, tunnels, policy tasks, and recent critical alarms.
 
-## 11. Instructor Scoring Rubric
+## 11. Assessment Rubric
 
 | Area | Weight | Criteria |
 |---|---:|---|

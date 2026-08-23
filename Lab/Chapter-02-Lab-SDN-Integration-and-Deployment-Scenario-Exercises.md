@@ -1,10 +1,10 @@
-# Day 2 Lab - SDN Integration and Deployment Scenario Exercises
+# Chapter 2 Lab - SDN Integration and Deployment Scenario Exercises
 
 ## 1. Lab Purpose
 
-Day 2 theory focused on SDN integration and deployment in brownfield enterprise networks. This lab turns those topics into scenario-based design and troubleshooting exercises.
+Chapter 2 theory focused on SDN integration and deployment in brownfield enterprise networks. This lab turns those topics into scenario-based design and troubleshooting exercises.
 
-Unlike Day 1, this lab is not primarily a command-by-command Mininet exercise. Day 2 is about architecture decisions:
+Unlike Chapter 1, this lab is not primarily a command-by-command Mininet exercise. Chapter 2 is about architecture decisions:
 
 - How does an SDN domain connect to a traditional network?
 - How should routing be exchanged?
@@ -42,7 +42,7 @@ Each exercise includes:
 - Requirements.
 - Tasks.
 - Expected deliverables.
-- Instructor guidance.
+- Review guidance.
 - Suggested answer framework.
 - Review questions.
 
@@ -52,7 +52,7 @@ Suggested timing:
 
 | Section | Time |
 |---|---:|
-| Instructor briefing | 15 min |
+| Workshop briefing | 15 min |
 | Exercise 1 | 60 min |
 | Exercise 2 | 70 min |
 | Exercise 3 | 75 min |
@@ -64,7 +64,7 @@ Minimum:
 
 - Whiteboard or digital diagramming tool.
 - Markdown editor, PowerPoint, draw.io, Visio, Lucidchart, or similar.
-- Access to Day 2 theory document.
+- Access to Chapter 2 theory document.
 
 Optional:
 
@@ -727,7 +727,7 @@ Presentation should include:
 - Migration/validation/rollback.
 - Risks and mitigations.
 
-Instructor should challenge each group with:
+Use these design review questions for each group:
 
 - What happens if the controller fails?
 - Where is the default route?
@@ -736,7 +736,7 @@ Instructor should challenge each group with:
 - What is your rollback trigger?
 - Who owns the policy matrix?
 
-## 10. Instructor Scoring Rubric
+## 10. Assessment Rubric
 
 | Area | Weight | Criteria |
 |---|---:|---|
@@ -765,7 +765,7 @@ Common mistakes:
 
 ## 12. Key Takeaways
 
-- Day 2 is about integration boundaries.
+- Chapter 2 is about integration boundaries.
 - SDN-to-traditional integration must be designed around routing, segmentation, security, and operations.
 - Multi-domain segmentation requires mapping between different constructs such as VN, SGT, VPN, VRF, EPG, firewall zone, and cloud security group.
 - Brownfield migration must be phased, validated, and reversible.

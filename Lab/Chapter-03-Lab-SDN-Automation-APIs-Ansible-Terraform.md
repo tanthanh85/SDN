@@ -1,8 +1,8 @@
-# Day 3 Lab - SDN Automation with REST APIs, Ansible, and Terraform
+# Chapter 3 Lab - SDN Automation with REST APIs, Ansible, and Terraform
 
 ## 1. Lab Purpose
 
-Day 3 theory covered SDN automation, APIs, source of truth, idempotency, Ansible, Terraform, and infrastructure as code.
+Chapter 3 theory covered SDN automation, APIs, source of truth, idempotency, Ansible, Terraform, and infrastructure as code.
 
 This lab gives learners practical automation exercises that can be completed with either:
 
@@ -35,7 +35,7 @@ Suggested timing:
 
 | Section | Time |
 |---|---:|
-| Instructor briefing | 15 min |
+| Workshop briefing | 15 min |
 | Environment verification | 20 min |
 | Exercise 1 | 45 min |
 | Exercise 2 | 60 min |
@@ -100,7 +100,7 @@ flowchart TB
     API --> Task["Task status"]
 ```
 
-## 5. Instructor Preparation
+## 5. Lab Environment Options
 
 Choose one lab mode.
 
@@ -114,7 +114,7 @@ Use this mode if you have access to:
 - Cisco DevNet sandbox.
 - Any SDN controller with REST API.
 
-Instructor must provide:
+Lab requirements:
 
 - Controller URL.
 - Username/password or token workflow.
@@ -134,7 +134,7 @@ Recommended safety:
 
 Use this mode when no real controller is available.
 
-Instructor can run a simple mock API server that behaves like a small SDN controller:
+A mock API server can run a simple mock API server that behaves like a small SDN controller:
 
 - Authentication returns a token.
 - Inventory endpoint returns devices.
@@ -1107,7 +1107,7 @@ flowchart TB
 - Rollback concept.
 - Security controls.
 
-## 13. Instructor Scoring Rubric
+## 13. Assessment Rubric
 
 | Area | Weight | Criteria |
 |---|---:|---|

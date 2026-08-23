@@ -1,8 +1,8 @@
-# Day 1 Lab - SDN Fundamentals with Mininet and Open vSwitch
+# Chapter 1 Lab - SDN Fundamentals with Mininet and Open vSwitch
 
 ## 1. Lab Purpose
 
-This lab helps learners observe the core SDN concepts discussed in Day 1:
+This lab helps learners observe the core SDN concepts discussed in Chapter 1:
 
 - Data plane vs control plane.
 - SDN controller behavior.
@@ -37,7 +37,7 @@ Suggested timing:
 
 | Section | Time |
 |---|---:|
-| Instructor briefing | 15 min |
+| Workshop briefing | 15 min |
 | Environment verification | 20 min |
 | Lab 1: Basic Mininet topology | 35 min |
 | Lab 2: Open vSwitch flow table inspection | 35 min |
@@ -90,7 +90,7 @@ Recommended student access:
 - Web browser for documentation.
 - Terminal access.
 
-## 6. Instructor Preparation
+## 6. Lab Environment Verification
 
 Before class, verify the lab machine has:
 
@@ -363,7 +363,7 @@ sudo ovs-ofctl dump-flows s2
 - Flow tables contain forwarding entries.
 - Switch ports can be mapped to hosts and inter-switch links.
 
-### Instructor Note
+### Study Note
 
 Ask students:
 
@@ -843,9 +843,9 @@ sudo ovs-ofctl -O OpenFlow13 dump-flows s2
 | Flow counters | Telemetry and forwarding evidence |
 | `pingall` | Basic reachability validation |
 
-## 19. Instructor Debrief
+## 19. Lab Debrief
 
-Use these questions to connect the lab back to Day 1 theory:
+Use these questions to connect the lab back to Chapter 1 theory:
 
 1. Which component represented the data plane?
 2. Which component represented the control plane?
