@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 760" role="img" aria-labelledby="title desc">
+  <title id="title">PetroVale brownfield network baseline</title>
+  <desc id="desc">Two independent data centers, MPLS WAN, mixed campus, branches, factories, and current segmentation constraints.</desc>
+  <defs>
+    <style>.zone{fill:#f7fbff;stroke:#245a88;stroke-width:3}.ot{fill:#fff7e8;stroke:#b06a00;stroke-width:3}.wan{fill:#eef8f1;stroke:#287a44;stroke-width:3}.box{fill:#fff;stroke:#245a88;stroke-width:2}.warn{fill:#fff4f2;stroke:#b42318;stroke-width:2}.line{stroke:#245a88;stroke-width:3;fill:none}.ospf{stroke:#287a44;stroke-width:3;fill:none}.label{font:700 24px Arial;fill:#142033}.text{font:15px Arial;fill:#18324a}.small{font:13px Arial;fill:#18324a}</style>
+  </defs>
+  <rect width="1320" height="760" fill="#eef3f7"/>
+  <text x="36" y="44" class="label">PetroVale Current Brownfield Network</text>
+  <rect x="36" y="80" width="292" height="250" rx="12" class="zone"/><text x="60" y="116" class="label">DC1</text>
+  <rect x="58" y="138" width="108" height="52" rx="8" class="box"/><text x="112" y="169" text-anchor="middle" class="small">Core GW</text>
+  <rect x="198" y="138" width="108" height="52" rx="8" class="box"/><text x="252" y="169" text-anchor="middle" class="small">Access</text>
+  <rect x="58" y="218" width="108" height="52" rx="8" class="warn"/><text x="112" y="248" text-anchor="middle" class="small">STP VLANs</text>
+  <rect x="198" y="218" width="108" height="52" rx="8" class="warn"/><text x="252" y="248" text-anchor="middle" class="small">FW A/S</text>
+  <path d="M166 164 H198" class="line"/><path d="M112 190 V218" class="line"/><path d="M252 190 V218" class="line"/>
+  <text x="60" y="304" class="text">Default gateways on core, weak east-west control</text>
+  <rect x="36" y="380" width="292" height="250" rx="12" class="zone"/><text x="60" y="416" class="label">DC2</text>
+  <rect x="58" y="438" width="108" height="52" rx="8" class="box"/><text x="112" y="469" text-anchor="middle" class="small">Core GW</text>
+  <rect x="198" y="438" width="108" height="52" rx="8" class="box"/><text x="252" y="469" text-anchor="middle" class="small">Access</text>
+  <rect x="58" y="518" width="108" height="52" rx="8" class="warn"/><text x="112" y="548" text-anchor="middle" class="small">STP VLANs</text>
+  <rect x="198" y="518" width="108" height="52" rx="8" class="warn"/><text x="252" y="548" text-anchor="middle" class="small">FW A/S</text>
+  <path d="M166 464 H198" class="line"/><path d="M112 490 V518" class="line"/><path d="M252 490 V518" class="line"/>
+  <text x="60" y="604" class="text">Independent operations, no common fabric policy</text>
+  <rect x="420" y="170" width="250" height="380" rx="12" class="wan"/><text x="452" y="210" class="label">WAN</text>
+  <rect x="455" y="240" width="180" height="56" rx="8" class="box"/><text x="545" y="273" text-anchor="middle" class="small">MPLS Provider 1</text>
+  <rect x="455" y="330" width="180" height="56" rx="8" class="box"/><text x="545" y="363" text-anchor="middle" class="small">MPLS Provider 2</text>
+  <rect x="455" y="420" width="180" height="56" rx="8" class="warn"/><text x="545" y="453" text-anchor="middle" class="small">OSPF exchange</text>
+  <text x="452" y="518" class="text">No application-aware routing</text>
+  <path d="M328 205 C370 220 380 250 420 267" class="ospf"/><path d="M328 505 C370 500 380 462 420 448" class="ospf"/>
+  <rect x="760" y="88" width="480" height="230" rx="12" class="zone"/><text x="786" y="124" class="label">Main Campus</text>
+  <rect x="790" y="148" width="132" height="58" rx="8" class="box"/><text x="856" y="182" text-anchor="middle" class="small">Bldg 1 Core</text>
+  <rect x="790" y="232" width="132" height="58" rx="8" class="box"/><text x="856" y="266" text-anchor="middle" class="small">Access</text>
+  <rect x="1056" y="148" width="132" height="58" rx="8" class="box"/><text x="1122" y="182" text-anchor="middle" class="small">Bldg 2 Dist</text>
+  <rect x="1056" y="232" width="132" height="58" rx="8" class="box"/><text x="1122" y="266" text-anchor="middle" class="small">Access</text>
+  <path d="M922 177 H1056" class="ospf"/><text x="990" y="166" text-anchor="middle" class="small">EIGRP</text>
+  <path d="M856 206 V232" class="line"/><path d="M1122 206 V232" class="line"/><text x="786" y="304" class="text">EIGRP/OSPF redistribution at Building 1 core</text>
+  <rect x="760" y="382" width="210" height="220" rx="12" class="zone"/><text x="786" y="420" class="label">5 Branches</text>
+  <rect x="802" y="450" width="126" height="56" rx="8" class="box"/><text x="865" y="484" text-anchor="middle" class="small">Local OSPF Core</text>
+  <rect x="802" y="528" width="126" height="44" rx="8" class="warn"/><text x="865" y="555" text-anchor="middle" class="small">VLAN/ACL policy</text>
+  <rect x="1030" y="382" width="210" height="220" rx="12" class="ot"/><text x="1056" y="420" class="label">2 Factories</text>
+  <rect x="1072" y="450" width="126" height="56" rx="8" class="box"/><text x="1135" y="484" text-anchor="middle" class="small">OSPF Core</text>
+  <rect x="1072" y="528" width="126" height="44" rx="8" class="warn"/><text x="1135" y="555" text-anchor="middle" class="small">OT L2 extended</text>
+  <path d="M670 268 C720 240 730 188 760 177" class="ospf"/><path d="M670 358 C730 390 730 478 760 478" class="ospf"/><path d="M670 448 C765 520 940 478 1030 478" class="ospf"/>
+</svg>

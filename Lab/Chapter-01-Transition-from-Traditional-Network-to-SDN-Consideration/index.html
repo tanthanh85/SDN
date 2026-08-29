@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transition from Traditional Network to SDN Consideration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="reference-panel" aria-label="Workshop menu">
+      <div class="panel-header">
+        <p class="eyebrow">PetroVale Energy</p>
+        <h1>Transition from Traditional Network to SDN Consideration</h1>
+        <p class="subtitle">Brownfield petroleum enterprise decision workshop</p>
+      </div>
+
+      <nav class="menu" aria-label="Workshop sections">
+        <button class="menu-item active" type="button" data-view="questions">
+          <span>Questions</span>
+          <small>One-way decision flow</small>
+        </button>
+        <button class="menu-item" type="button" data-view="background">
+          <span>Company Background</span>
+          <small>Business drivers and constraints</small>
+        </button>
+        <button class="menu-item" type="button" data-view="network">
+          <span>Current Network Diagram</span>
+          <small>Brownfield topology and IT/OT boundary</small>
+        </button>
+        <button class="menu-item" type="button" data-view="contexts">
+          <span class="menu-title-row">
+            <span class="menu-label">Scenario Updates</span>
+            <span class="menu-badge hidden" aria-label="Unread scenario updates"></span>
+          </span>
+          <small class="menu-hint">Information revealed during the workshop</small>
+        </button>
+      </nav>
+
+      <section class="menu-note">
+        <h2>Workshop Rule</h2>
+        <p>Use the menu to review company context, network diagrams, and new scenario updates. In Questions, each answer is locked after clicking <strong>Next</strong>.</p>
+      </section>
+    </aside>
+
+    <main class="assessment-panel">
+      <section id="questionView" class="question-view content-view" aria-live="polite"></section>
+      <section id="resultsView" class="results-view content-view hidden" aria-live="polite"></section>
+
+      <section id="backgroundView" class="content-view hidden" aria-live="polite">
+        <div class="content-card">
+          <p class="eyebrow dark-label">Company Background</p>
+          <h2>PetroVale Energy</h2>
+          <p>PetroVale Energy is a petroleum corporation operating upstream offices, refinery environments, fuel distribution terminals, branch offices, data centers, cloud workloads, SaaS applications, and remote access services.</p>
+          <div class="role-callout">
+            <h3>Your Role</h3>
+            <p>You are part of PetroVale's IT organization as the SDN Network Architect. Your responsibility is to clarify SDN concepts, challenge assumptions, evaluate brownfield constraints, and advise the architecture working group on a realistic transition path from traditional networking toward SDN-oriented operations.</p>
+          </div>
+          <h3>Organization and Stakeholders</h3>
+          <div class="org-grid">
+            <article>
+              <h4>Executive Leadership</h4>
+              <ul>
+                <li><strong>Nguyễn Thu Hà</strong>, CEO - sponsors the modernization program and expects a staged, business-aligned roadmap.</li>
+                <li><strong>Trần Minh Linh</strong>, CIO - owns enterprise IT strategy and wants SDN framed before vendor selection.</li>
+                <li><strong>Nguyễn Hoàng Minh</strong>, CTO - leads technical governance and challenges architecture assumptions.</li>
+                <li><strong>Lê Thu Trang</strong>, CISO - owns cyber risk, policy governance, and IT/OT security posture.</li>
+              </ul>
+            </article>
+            <article>
+              <h4>IT and Architecture</h4>
+              <ul>
+                <li class="learner-role"><strong>You</strong>, SDN Network Architect - member of the IT team responsible for SDN architecture guidance.</li>
+                <li><strong>Phạm Quỳnh Anh</strong>, Enterprise Architect - coordinates domain boundaries, architecture principles, and roadmap alignment.</li>
+                <li><strong>Đỗ Ngọc Lan</strong>, Director of Network Operations - owns NOC readiness and operational transition.</li>
+                <li><strong>Vũ Đức Anh</strong>, Automation Lead - evaluates APIs, source-of-truth readiness, and low-risk automation.</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Domain Stakeholders</h4>
+              <ul>
+                <li><strong>Nguyễn Văn Thành</strong>, Refinery Operations Manager - protects refinery availability and OT safety constraints.</li>
+                <li><strong>Trần Hải Yến</strong>, WAN Operations Lead - owns branch connectivity, failover, and transport quality.</li>
+                <li><strong>Lê Quốc Bảo</strong>, Cloud Platform Lead - owns cloud route control, security groups, and cloud logging.</li>
+                <li><strong>Phạm Thùy Dương</strong>, VP Regional Operations - represents branch, terminal, and business-user experience.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="two-column">
+            <article>
+              <h3>Business Priorities</h3>
+              <ul>
+                <li>Improve segmentation between corporate IT, contractors, guest, IoT, and refinery OT.</li>
+                <li>Reduce time required to deploy branch and terminal network services.</li>
+                <li>Improve visibility into user-to-application and refinery-to-historian traffic.</li>
+                <li>Standardize policy across campus, branch, data center, cloud, and remote access.</li>
+                <li>Reduce operational risk from manual device-by-device configuration.</li>
+                <li>Maintain safe and stable refinery operations during any transition.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Executive Constraints</h3>
+              <ul>
+                <li>No enterprise-wide hardware refresh in the first year.</li>
+                <li>The routing core and firewalls remain during initial phases.</li>
+                <li>Refineries cannot tolerate disruptive probing or uncontrolled policy changes.</li>
+                <li>The operations team is strong in routing and switching but new to controllers and APIs.</li>
+              </ul>
+            </article>
+          </div>
+          <img class="wide-visual" src="assets/sdn-transition-journey.svg" alt="Transition from traditional network to SDN consideration journey">
+        </div>
+      </section>
+
+      <section id="networkView" class="content-view hidden" aria-live="polite">
+        <div class="content-card">
+          <p class="eyebrow dark-label">Current Network Diagram</p>
+          <h2>Brownfield Network Baseline</h2>
+          <p>The current environment uses traditional routing, VLANs, 5-tuple ACLs, firewall zones, manual rule management, basic SNMP monitoring, and a separate syslog server. These diagrams are the primary reference for boundary, underlay, policy, campus, WAN, data center, and IT/OT questions.</p>
+          <img class="wide-visual" src="assets/brownfield-petroleum-network.svg" alt="Brownfield petroleum enterprise network diagram">
+          <div class="two-column">
+            <article>
+              <h3>Current State</h3>
+              <ul>
+                <li>Two independent data centers use traditional two-tier switching; DC cores are default gateways for server VLANs.</li>
+                <li>WAN routers connect to remote offices and factories through two Layer 3 MPLS VPN providers using OSPF.</li>
+                <li>The main campus mixes two-tier and three-tier design with EIGRP-to-OSPF redistribution.</li>
+                <li>Branches and factories have local OSPF cores; OT networks are currently extended Layer 2.</li>
+                <li>Segmentation relies on VLANs and 5-tuple ACLs across core, distribution, WAN routers, and firewalls.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Observed Challenges</h3>
+              <ul>
+                <li>No application-aware WAN routing.</li>
+                <li>No identity per user or IoT device and no current microsegmentation.</li>
+                <li>No macro segmentation between corporate and contractor traffic.</li>
+                <li>Data center east-west policy is weak and STP convergence can cause long outages.</li>
+              </ul>
+            </article>
+          </div>
+          <h2>IT/OT Boundary</h2>
+          <img class="wide-visual" src="assets/it-ot-boundary.svg" alt="IT OT boundary diagram">
+        </div>
+      </section>
+
+      <section id="contextsView" class="content-view hidden" aria-live="polite">
+        <div class="content-card">
+          <p class="eyebrow dark-label">Scenario Updates</p>
+          <h2>Scenario Updates</h2>
+          <p>Information in this section appears only after it becomes relevant in the workshop flow.</p>
+          <div id="contextCards" class="context-card-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

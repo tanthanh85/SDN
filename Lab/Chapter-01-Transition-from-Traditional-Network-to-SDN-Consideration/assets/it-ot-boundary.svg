@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Traditional IT and OT Boundary</title>
+  <desc id="desc">IT and OT boundary showing corporate IT, firewall, industrial DMZ, refinery control network, approved historian and jump host flows, and blocked direct IT to PLC access.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7fafc}.zone{fill:#fff;stroke:#1f4f79;stroke-width:2;rx:14}.it{fill:#e8f2ff}.dmz{fill:#fff6e6}.ot{fill:#eef9ee}.fw{fill:#fff0ef}.box{fill:#fff;stroke:#1f4f79;stroke-width:2;rx:10}.label{font:700 22px Arial;fill:#10243a}.section{font:700 19px Arial;fill:#163a5f}.small{font:14px Arial;fill:#29445f}.tiny{font:12px Arial;fill:#40576f}.allow{stroke:#247a3b;stroke-width:4;fill:none}.admin{stroke:#315d86;stroke-width:4;fill:none}.deny{stroke:#b42318;stroke-width:4;fill:none;stroke-dasharray:10 8}.boundary{stroke:#9aacbf;stroke-width:2;stroke-dasharray:10 8}.note{fill:#fff;stroke:#c7d3df;stroke-width:1.5;rx:8}.warn{font:700 14px Arial;fill:#b42318}.ok{font:700 14px Arial;fill:#247a3b}
+    </style>
+    <marker id="greenArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#247a3b"/>
+    </marker>
+    <marker id="blueArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#315d86"/>
+    </marker>
+    <marker id="redArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#b42318"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1400" height="760"/>
+  <text x="48" y="54" class="label" style="font-size:30px">IT/OT Boundary in the Existing Environment</text>
+  <text x="48" y="84" class="small">Refinery transition planning starts with visibility, approved paths, and conservative policy control.</text>
+
+  <rect x="55" y="140" width="300" height="390" class="zone it"/>
+  <text x="125" y="178" class="section">Corporate IT</text>
+  <rect x="100" y="220" width="200" height="58" class="box"/><text x="158" y="255" class="small">Users</text>
+  <rect x="100" y="312" width="200" height="58" class="box"/><text x="139" y="347" class="small">Admin Tools</text>
+  <rect x="100" y="404" width="200" height="58" class="box"/><text x="128" y="439" class="small">Reporting Apps</text>
+  <text x="92" y="572" class="tiny">Typical current controls: VLANs, ACLs, firewall rules, manual exceptions</text>
+
+  <line x1="410" y1="120" x2="410" y2="615" class="boundary"/>
+  <rect x="455" y="250" width="210" height="120" class="zone fw"/>
+  <text x="513" y="294" class="section">IT/OT</text>
+  <text x="497" y="324" class="section">Firewall Pair</text>
+  <text x="485" y="352" class="tiny">Zone rules and logs</text>
+
+  <line x1="715" y1="120" x2="715" y2="615" class="boundary"/>
+  <rect x="760" y="150" width="280" height="330" class="zone dmz"/>
+  <text x="819" y="188" class="section">Industrial DMZ</text>
+  <rect x="815" y="240" width="170" height="58" class="box"/><text x="861" y="275" class="small">Historian</text>
+  <rect x="815" y="340" width="170" height="58" class="box"/><text x="857" y="375" class="small">Jump Host</text>
+  <text x="805" y="520" class="tiny">Approved inspection and mediation point</text>
+
+  <line x1="1088" y1="120" x2="1088" y2="615" class="boundary"/>
+  <rect x="1135" y="140" width="220" height="390" class="zone ot"/>
+  <text x="1184" y="178" class="section">Refinery OT</text>
+  <rect x="1180" y="220" width="130" height="54" class="box"/><text x="1224" y="253" class="small">PLC</text>
+  <rect x="1180" y="310" width="130" height="54" class="box"/><text x="1224" y="343" class="small">HMI</text>
+  <rect x="1180" y="400" width="130" height="54" class="box"/><text x="1210" y="433" class="small">Sensors</text>
+  <text x="1168" y="572" class="tiny">Legacy protocols, high availability, safety constraints</text>
+
+  <path class="allow" marker-end="url(#greenArrow)" d="M300 433h155"/>
+  <path class="allow" marker-end="url(#greenArrow)" d="M665 310h150"/>
+  <path class="allow" marker-end="url(#greenArrow)" d="M985 269c80 0 105-25 195-25"/>
+  <text x="500" y="434" class="ok">Historian/reporting path</text>
+
+  <path class="admin" marker-end="url(#blueArrow)" d="M300 341h155"/>
+  <path class="admin" marker-end="url(#blueArrow)" d="M665 341h150"/>
+  <path class="admin" marker-end="url(#blueArrow)" d="M985 369c78 0 105-30 195-30"/>
+  <text x="500" y="224" class="small">Maintenance access should terminate on the jump host.</text>
+
+  <path class="deny" marker-end="url(#redArrow)" d="M300 249h120"/>
+  <path class="deny" marker-end="url(#redArrow)" d="M685 249h75"/>
+  <path class="deny" marker-end="url(#redArrow)" d="M1040 249h140"/>
+  <text x="455" y="202" class="warn">Direct corporate IT to PLC access is denied by default.</text>
+
+  <rect x="95" y="640" width="1210" height="58" class="note"/>
+  <text x="120" y="675" class="warn">Design implication:</text>
+  <text x="255" y="675" class="tiny">Begin with passive visibility, firewall log review, approved historian and jump-host flows, identity-aware access, change windows, and clear rollback before active policy enforcement.</text>
+</svg>

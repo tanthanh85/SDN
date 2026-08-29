@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PetroVale DC1 ACI Implementation Lab</title>
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Lab navigation">
+      <header class="brand">
+        <p class="eyebrow">PetroVale Energy</p>
+        <h1>DC1 ACI Implementation Lab</h1>
+        <p>Build, validate, and prepare the data center fabric for migration.</p>
+      </header>
+
+      <section class="progress-panel" aria-label="Lab progress">
+        <div><strong id="progressCount">0 of 14</strong><span> tasks complete</span></div>
+        <div class="progress-track"><span id="progressBar"></span></div>
+      </section>
+
+      <nav id="taskNav" class="task-nav" aria-label="Lab tasks"></nav>
+
+      <section class="sidebar-note">
+        <strong>Credentials</strong>
+        <p>The APIC URL, username, and password are provided by the instructor. Do not enter the password in this page.</p>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <section class="topbar">
+        <div>
+          <p id="phaseLabel" class="eyebrow dark">Implementation phase</p>
+          <h2 id="taskTitle">Lab overview</h2>
+        </div>
+        <button id="printButton" class="secondary-button" type="button" title="Print lab guide">Print</button>
+      </section>
+
+      <article id="taskContent" class="task-content" aria-live="polite"></article>
+
+      <footer class="task-actions">
+        <button id="previousButton" class="secondary-button" type="button">Previous</button>
+        <button id="completeButton" class="complete-button" type="button">Mark complete</button>
+        <button id="nextButton" class="primary-button" type="button">Next</button>
+      </footer>
+    </main>
+  </div>
+  <script src="app.js?v=13"></script>
+</body>
+</html>

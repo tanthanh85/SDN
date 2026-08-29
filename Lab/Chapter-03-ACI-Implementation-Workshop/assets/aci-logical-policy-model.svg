@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 940" role="img" aria-labelledby="title desc">
+  <title id="title">PetroVale ACI tenant logical policy model</title>
+  <desc id="desc">One PetroVale tenant contains Corp and Contractor VRFs, bridge domains, application EPGs, contracts, and a separate L3Out with an external EPG for each VRF.</desc>
+  <style>
+    .tenant{fill:#f8fafc;stroke:#245d8b;stroke-width:4}.vrfCorp{fill:#edf7fb;stroke:#2873a5;stroke-width:3}.vrfCtr{fill:#f4f1fa;stroke:#73559d;stroke-width:3}.policy{fill:#fff8e8;stroke:#a86e12;stroke-width:3}.object{fill:#fff;stroke:#5a7791;stroke-width:3}.epg{fill:#eef8f1;stroke:#2e7b49;stroke-width:3}.external{fill:#fff1ed;stroke:#b74b35;stroke-width:3}.contain{stroke:#6d8296;stroke-width:3;fill:none}.relation{stroke:#2873a5;stroke-width:4;fill:none}.contract{stroke:#a86e12;stroke-width:4;stroke-dasharray:11 8;fill:none}.cross{stroke:#73559d;stroke-width:4;stroke-dasharray:6 7;fill:none}.title{font:700 28px Arial;fill:#17324d}.heading{font:700 22px Arial;fill:#17324d}.label{font:700 18px Arial;fill:#17324d}.small{font:16px Arial;fill:#354f67}.tiny{font:14px Arial;fill:#50677c}.lineLabel{font:700 14px Arial;paint-order:stroke;stroke:#fff;stroke-width:7;fill:#405c73}
+  </style>
+  <rect width="1500" height="940" fill="#fff"/>
+  <rect class="tenant" x="35" y="45" width="1430" height="825" rx="10"/>
+  <text class="title" x="70" y="90">Tenant: &lt;prefix&gt;-petrovale</text>
+  <text class="small" x="70" y="118">Administrative and policy container for the DC1 lab</text>
+
+  <rect class="vrfCorp" x="75" y="155" width="875" height="535" rx="8"/>
+  <text class="heading" x="105" y="195">VRF: &lt;prefix&gt;-vrf-corp</text>
+  <text class="small" x="105" y="220">Corporate routing domain</text>
+
+  <rect class="vrfCtr" x="985" y="155" width="435" height="535" rx="8"/>
+  <text class="heading" x="1015" y="195">VRF: &lt;prefix&gt;-vrf-contractor</text>
+  <text class="small" x="1015" y="220">Contractor routing domain</text>
+
+  <path class="relation" d="M250 325 V390"/><path class="relation" d="M500 325 V390"/><path class="relation" d="M1105 325 V390"/>
+  <path class="relation" d="M250 485 V550"/><path class="relation" d="M500 485 V550"/><path class="relation" d="M1105 485 V550"/>
+  <text class="lineLabel" x="260" y="365">associated with VRF</text><text class="lineLabel" x="260" y="525">EPG uses BD</text>
+
+  <rect class="object" x="130" y="250" width="240" height="75" rx="6"/><text class="label" x="250" y="281" text-anchor="middle">BD Corp Web Test</text><text class="tiny" x="250" y="306" text-anchor="middle">Subnet and gateway</text>
+  <rect class="object" x="380" y="250" width="240" height="75" rx="6"/><text class="label" x="500" y="281" text-anchor="middle">BD Corp App Test</text><text class="tiny" x="500" y="306" text-anchor="middle">Subnet and gateway</text>
+  <rect class="epg" x="130" y="390" width="240" height="95" rx="6"/><text class="label" x="250" y="425" text-anchor="middle">EPG Corp Web Test</text><text class="tiny" x="250" y="452" text-anchor="middle">1 VLAN + static path</text>
+  <rect class="epg" x="380" y="390" width="240" height="95" rx="6"/><text class="label" x="500" y="425" text-anchor="middle">EPG Corp App Test</text><text class="tiny" x="500" y="452" text-anchor="middle">1 VLAN + static path</text>
+
+  <rect class="policy" x="155" y="550" width="190" height="85" rx="6"/><text class="label" x="250" y="582" text-anchor="middle">HTTPS Contract</text><text class="tiny" x="250" y="608" text-anchor="middle">TCP/443 filter</text>
+  <rect class="policy" x="405" y="550" width="190" height="85" rx="6"/><text class="label" x="500" y="582" text-anchor="middle">Web-App Contract</text><text class="tiny" x="500" y="608" text-anchor="middle">Assigned app port</text>
+
+  <path class="contract" d="M345 592 H405"/><text class="lineLabel" x="375" y="580" text-anchor="middle">policy</text>
+  <path class="contract" d="M250 550 V485"/><path class="contract" d="M500 550 V485"/>
+
+  <rect class="external" x="680" y="250" width="225" height="105" rx="6"/><text class="label" x="792" y="286" text-anchor="middle">L3Out Corp</text><text class="tiny" x="792" y="313" text-anchor="middle">eBGP node + interface</text><text class="tiny" x="792" y="336" text-anchor="middle">profiles</text>
+  <path class="relation" d="M620 287 H680"/><text class="lineLabel" x="650" y="275" text-anchor="middle">VRF</text>
+  <rect class="external" x="680" y="410" width="225" height="85" rx="6"/><text class="label" x="792" y="443" text-anchor="middle">External EPG</text><text class="tiny" x="792" y="469" text-anchor="middle">Approved prefixes</text>
+  <path class="contain" d="M792 355 V410"/><text class="lineLabel" x="807" y="388">contains</text>
+  <path class="contract" d="M595 592 H792 V495"/><text class="lineLabel" x="700" y="580">contract relation</text>
+
+  <rect class="object" x="1015" y="250" width="180" height="75" rx="6"/><text class="label" x="1105" y="281" text-anchor="middle">BD Contractor</text><text class="tiny" x="1105" y="306" text-anchor="middle">Separate subnet</text>
+  <rect class="epg" x="1015" y="390" width="180" height="95" rx="6"/><text class="label" x="1105" y="423" text-anchor="middle">EPG Contractor</text><text class="tiny" x="1105" y="451" text-anchor="middle">1 VLAN + static path</text>
+  <rect class="policy" x="1015" y="550" width="180" height="85" rx="6"/><text class="label" x="1105" y="582" text-anchor="middle">Explicit Contract</text><text class="tiny" x="1105" y="608" text-anchor="middle">Only when approved</text>
+  <path class="contract" d="M1105 550 V485"/>
+  <path class="cross" d="M905 452 H1015"/><text class="lineLabel" x="960" y="440" text-anchor="middle">isolated</text>
+
+  <rect class="external" x="1220" y="250" width="170" height="90" rx="6"/><text class="label" x="1305" y="282" text-anchor="middle">L3Out Contractor</text><text class="tiny" x="1305" y="308" text-anchor="middle">eBGP boundary</text>
+  <path class="relation" d="M1305 220 V250"/><text class="lineLabel" x="1323" y="239">VRF</text>
+  <rect class="external" x="1220" y="410" width="170" height="75" rx="6"/><text class="label" x="1305" y="440" text-anchor="middle">External EPG</text><text class="tiny" x="1305" y="465" text-anchor="middle">Approved prefixes</text>
+  <path class="contain" d="M1305 340 V410"/><text class="lineLabel" x="1320" y="382">contains</text>
+  <path class="contract" d="M1195 592 H1305 V485"/>
+
+  <rect class="policy" x="75" y="730" width="1345" height="100" rx="6"/>
+  <text class="heading" x="105" y="770">Application Profile: &lt;prefix&gt;-ap-network-centric</text>
+  <text class="small" x="105" y="800">Contains the application EPG objects. Bridge domains remain under Networking; contracts and filters remain reusable tenant policy objects.</text>
+
+  <line class="relation" x1="105" y1="900" x2="165" y2="900"/><text class="tiny" x="175" y="906">object association / containment</text>
+  <line class="contract" x1="455" y1="900" x2="515" y2="900"/><text class="tiny" x="525" y="906">contract relationship</text>
+  <line class="cross" x1="760" y1="900" x2="820" y2="900"/><text class="tiny" x="830" y="906">intentional isolation boundary</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">ACI Simulator implementation lab topology</title>
+  <desc id="desc">A learner workstation reaches an ACI Simulator VM management interface. The VM contains APIC and simulated leaf-spine nodes. Assigned leaf ports connect to simulated test endpoints and an optional external BGP peer.</desc>
+  <style>
+    .zone{fill:#f7fafc;stroke:#9dbbd2;stroke-width:3}.fabric{fill:#eef8f2;stroke:#8ab99b;stroke-width:3}.external{fill:#fff7e8;stroke:#d3ae69;stroke-width:3}.device{fill:#fff;stroke:#24618f;stroke-width:4}.router{fill:#fff;stroke:#267642;stroke-width:4}.server{fill:#fff;stroke:#6a4b9b;stroke-width:4}.l2{stroke:#24618f;stroke-width:4;fill:none}.l3{stroke:#267642;stroke-width:5;fill:none}.mgmt{stroke:#6a4b9b;stroke-width:4;stroke-dasharray:10 8;fill:none}.label{font:700 24px Arial;fill:#17324d}.small{font:18px Arial;fill:#27465f}.tiny{font:16px Arial;fill:#27465f}.linklabel{font:700 16px Arial;paint-order:stroke;stroke:#fff;stroke-width:7;fill:#27465f}.port{fill:#dceaf4;stroke:#24618f;stroke-width:2}
+  </style>
+  <rect width="1400" height="760" fill="#fff"/>
+  <rect class="zone" x="35" y="55" width="265" height="615" rx="10"/>
+  <text class="label" x="65" y="100">Learner access</text>
+  <rect class="fabric" x="345" y="55" width="735" height="615" rx="10"/>
+  <text class="label" x="375" y="100">ACI Simulator VM</text>
+  <rect class="external" x="1125" y="55" width="240" height="615" rx="10"/>
+  <text class="label" x="1155" y="100">Instructor services</text>
+
+  <path class="mgmt" d="M240 250 H410"/>
+  <text class="linklabel" x="272" y="237">HTTPS management</text>
+  <path class="mgmt" d="M530 250 H650"/>
+  <path class="mgmt" d="M530 270 C565 315 590 405 620 505"/>
+
+  <path class="l2" d="M760 250 L645 390 M760 250 L855 390"/>
+  <path class="l2" d="M930 250 L645 390 M930 250 L855 390"/>
+  <text class="linklabel" x="735" y="335">Fabric links</text>
+
+  <path class="l2" d="M645 470 V590 H510"/>
+  <path class="l2" d="M855 470 V590 H945"/>
+  <text class="linklabel" x="512" y="570">Assigned VLAN bindings</text>
+
+  <path class="l3" d="M855 430 H1190"/>
+  <text class="linklabel" x="940" y="414">Optional eBGP L3Out</text>
+
+  <g transform="translate(90 175)">
+    <rect class="server" width="150" height="105" rx="10"/><rect x="22" y="20" width="106" height="58" fill="#eef0f8" stroke="#6a4b9b" stroke-width="3"/><line x1="55" y1="92" x2="95" y2="92" stroke="#6a4b9b" stroke-width="4"/><text class="small" x="75" y="132" text-anchor="middle">Workstation</text>
+  </g>
+
+  <g transform="translate(410 190)">
+    <rect class="server" width="120" height="120" rx="10"/><circle cx="35" cy="45" r="10" fill="#6a4b9b"/><circle cx="60" cy="75" r="10" fill="#6a4b9b"/><circle cx="85" cy="45" r="10" fill="#6a4b9b"/><line x1="35" y1="45" x2="60" y2="75" stroke="#6a4b9b" stroke-width="4"/><line x1="85" y1="45" x2="60" y2="75" stroke="#6a4b9b" stroke-width="4"/><text class="small" x="60" y="150" text-anchor="middle">APIC</text>
+  </g>
+
+  <g transform="translate(700 170)"><rect class="device" width="120" height="80" rx="10"/><line x1="25" y1="25" x2="95" y2="25" stroke="#24618f" stroke-width="4"/><line x1="25" y1="42" x2="95" y2="42" stroke="#24618f" stroke-width="4"/><text class="small" x="60" y="110" text-anchor="middle">Spine 1</text></g>
+  <g transform="translate(870 170)"><rect class="device" width="120" height="80" rx="10"/><line x1="25" y1="25" x2="95" y2="25" stroke="#24618f" stroke-width="4"/><line x1="25" y1="42" x2="95" y2="42" stroke="#24618f" stroke-width="4"/><text class="small" x="60" y="110" text-anchor="middle">Spine 2</text></g>
+  <g transform="translate(585 390)"><rect class="device" width="120" height="80" rx="10"/><line x1="25" y1="25" x2="95" y2="25" stroke="#24618f" stroke-width="4"/><rect class="port" x="20" y="52" width="15" height="12"/><rect class="port" x="44" y="52" width="15" height="12"/><rect class="port" x="68" y="52" width="15" height="12"/><rect class="port" x="92" y="52" width="15" height="12"/><text class="small" x="60" y="110" text-anchor="middle">Leaf 101</text></g>
+  <g transform="translate(795 390)"><rect class="device" width="120" height="80" rx="10"/><line x1="25" y1="25" x2="95" y2="25" stroke="#24618f" stroke-width="4"/><rect class="port" x="20" y="52" width="15" height="12"/><rect class="port" x="44" y="52" width="15" height="12"/><rect class="port" x="68" y="52" width="15" height="12"/><rect class="port" x="92" y="52" width="15" height="12"/><text class="small" x="60" y="110" text-anchor="middle">Leaf 102</text></g>
+
+  <g transform="translate(430 590)"><rect class="server" width="160" height="55" rx="8"/><circle cx="135" cy="18" r="6" fill="#267642"/><circle cx="135" cy="37" r="6" fill="#267642"/><text class="tiny" x="80" y="82" text-anchor="middle">Test endpoints</text></g>
+  <g transform="translate(945 590)"><rect class="server" width="105" height="55" rx="8"/><circle cx="82" cy="18" r="6" fill="#267642"/><circle cx="82" cy="37" r="6" fill="#267642"/><text class="tiny" x="52" y="82" text-anchor="middle">Pilot objects</text></g>
+
+  <g transform="translate(1190 365)"><circle class="router" cx="55" cy="55" r="55"/><path d="M25 55 H85 M70 38 L87 55 L70 72 M40 38 L23 55 L40 72" fill="none" stroke="#267642" stroke-width="4"/><text class="small" x="55" y="145" text-anchor="middle">External peer</text><text class="tiny" x="55" y="168" text-anchor="middle">when enabled</text></g>
+
+  <line x1="65" y1="708" x2="125" y2="708" class="l2"/><text class="tiny" x="135" y="714">Layer 2 / fabric</text>
+  <line x1="325" y1="708" x2="385" y2="708" class="l3"/><text class="tiny" x="395" y="714">Layer 3 / eBGP</text>
+  <line x1="590" y1="708" x2="650" y2="708" class="mgmt"/><text class="tiny" x="660" y="714">Management</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 520" role="img" aria-labelledby="title desc">
+  <title id="title">IT OT boundary and identity policy design</title>
+  <desc id="desc">Identity, SGT assignment, macro segmentation, and controlled IT OT boundary for the design workshop.</desc>
+  <defs>
+    <style>.it{fill:#f7fbff;stroke:#245a88;stroke-width:3}.wan{fill:#eef8f1;stroke:#287a44;stroke-width:3}.ot{fill:#fff7e8;stroke:#b06a00;stroke-width:3}.policy{fill:#fff;stroke:#245a88;stroke-width:2}.guard{fill:#fff4f2;stroke:#b42318;stroke-width:2}.line{stroke:#245a88;stroke-width:3;fill:none}.green{stroke:#287a44;stroke-width:3;fill:none}.title{font:700 24px Arial;fill:#142033}.text{font:15px Arial;fill:#18324a}.small{font:13px Arial;fill:#18324a}</style>
+  </defs>
+  <rect width="1320" height="520" fill="#eef3f7"/>
+  <text x="36" y="44" class="title">Identity and IT/OT Segmentation Design View</text>
+  <rect x="48" y="84" width="285" height="350" rx="14" class="it"/><text x="78" y="124" class="title">Campus IT</text>
+  <rect x="82" y="160" width="110" height="54" rx="8" class="policy"/><text x="137" y="192" text-anchor="middle" class="small">802.1X User</text>
+  <rect x="82" y="244" width="110" height="54" rx="8" class="policy"/><text x="137" y="276" text-anchor="middle" class="small">IoT MAC</text>
+  <rect x="214" y="202" width="82" height="54" rx="8" class="policy"/><text x="255" y="234" text-anchor="middle" class="small">Switch</text>
+  <path d="M192 187 H214" class="line"/><path d="M192 271 H214" class="line"/>
+  <text x="78" y="360" class="text">Macro VN: Corp or Contractor</text>
+  <text x="78" y="386" class="text">Micro: SGT by user/device group</text>
+  <rect x="390" y="84" width="220" height="350" rx="14" class="policy"/><text x="420" y="124" class="title">ISE and AD</text>
+  <rect x="430" y="165" width="140" height="56" rx="8" class="policy"/><text x="500" y="198" text-anchor="middle" class="small">AD group lookup</text>
+  <rect x="430" y="255" width="140" height="56" rx="8" class="policy"/><text x="500" y="288" text-anchor="middle" class="small">ISE authorization</text>
+  <text x="420" y="360" class="text">Return SGT authorization</text>
+  <path d="M296 229 H390" class="line"/><path d="M390 284 H296" class="line"/>
+  <rect x="675" y="84" width="230" height="350" rx="14" class="wan"/><text x="705" y="124" class="title">WAN/DC Policy</text>
+  <rect x="715" y="162" width="150" height="54" rx="8" class="policy"/><text x="790" y="194" text-anchor="middle" class="small">SD-WAN VNs</text>
+  <rect x="715" y="244" width="150" height="54" rx="8" class="policy"/><text x="790" y="276" text-anchor="middle" class="small">ACI VRFs/EPGs</text>
+  <text x="705" y="360" class="text">Corp and Contractor separation</text>
+  <text x="705" y="386" class="text">SGT-aware enforcement where supported</text>
+  <path d="M333 229 C470 140 560 170 675 189" class="green"/>
+  <path d="M333 260 C470 335 560 300 675 271" class="green"/>
+  <rect x="970" y="84" width="285" height="350" rx="14" class="ot"/><text x="1000" y="124" class="title">Factory OT</text>
+  <rect x="1008" y="166" width="120" height="54" rx="8" class="guard"/><text x="1068" y="198" text-anchor="middle" class="small">IT/OT FW</text>
+  <rect x="1008" y="250" width="120" height="54" rx="8" class="policy"/><text x="1068" y="282" text-anchor="middle" class="small">Historian</text>
+  <rect x="1150" y="250" width="78" height="54" rx="8" class="policy"/><text x="1189" y="282" text-anchor="middle" class="small">Jump</text>
+  <text x="1000" y="360" class="text">Preserve OT Layer 2 stability</text>
+  <text x="1000" y="386" class="text">Stage policy around boundary flows</text>
+  <path d="M905 271 C928 260 946 214 970 193" class="line"/>
+</svg>

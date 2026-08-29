@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 760" role="img" aria-labelledby="title desc">
+  <title id="title">ACI Layer 4 to Layer 7 service insertion logical design</title>
+  <desc id="desc">A web EPG consumes an application contract whose subject references a service graph. The graph selects an unmanaged firewall device between the consumer and provider bridge domains.</desc>
+  <style>
+    .zone{fill:#f8fafc;stroke:#8da9bf;stroke-width:3}.policy{fill:#fff8e8;stroke:#a86e12;stroke-width:3}.epg{fill:#eef8f1;stroke:#2e7b49;stroke-width:3}.bd{fill:#edf6fb;stroke:#2873a5;stroke-width:3}.service{fill:#fff0ed;stroke:#b84d38;stroke-width:3}.select{fill:#f3f0fa;stroke:#73559d;stroke-width:3}.line{stroke:#4f708c;stroke-width:4;fill:none}.policyLine{stroke:#a86e12;stroke-width:4;stroke-dasharray:10 8;fill:none}.serviceLine{stroke:#b84d38;stroke-width:5;fill:none}.control{stroke:#73559d;stroke-width:4;stroke-dasharray:7 7;fill:none}.title{font:700 28px Arial;fill:#17324d}.heading{font:700 21px Arial;fill:#17324d}.label{font:700 18px Arial;fill:#17324d}.small{font:16px Arial;fill:#3c5369}.tiny{font:14px Arial;fill:#50677c}.lineLabel{font:700 14px Arial;paint-order:stroke;stroke:#fff;stroke-width:7;fill:#405c73}
+  </style>
+  <rect width="1500" height="760" fill="#fff"/>
+  <text class="title" x="50" y="55">Web-to-application firewall insertion</text>
+  <rect class="zone" x="40" y="85" width="1420" height="590" rx="10"/>
+  <text class="heading" x="70" y="125">Tenant: &lt;prefix&gt;-petrovale · VRF: Corp</text>
+
+  <rect class="epg" x="90" y="235" width="220" height="95" rx="7"/><text class="label" x="200" y="274" text-anchor="middle">Web EPG</text><text class="small" x="200" y="302" text-anchor="middle">Contract consumer</text>
+  <rect class="bd" x="90" y="410" width="220" height="85" rx="7"/><text class="label" x="200" y="445" text-anchor="middle">Web BD</text><text class="small" x="200" y="473" text-anchor="middle">Consumer-side network</text>
+
+  <rect class="policy" x="395" y="180" width="250" height="115" rx="7"/><text class="label" x="520" y="220" text-anchor="middle">Web-App Contract</text><text class="small" x="520" y="249" text-anchor="middle">Subject + app-port filter</text><text class="tiny" x="520" y="274" text-anchor="middle">Service graph attached</text>
+  <rect class="service" x="690" y="180" width="250" height="115" rx="7"/><text class="label" x="815" y="220" text-anchor="middle">Service Graph</text><text class="small" x="815" y="249" text-anchor="middle">Consumer · Firewall · Provider</text><text class="tiny" x="815" y="274" text-anchor="middle">Abstract policy sequence</text>
+  <rect class="service" x="690" y="380" width="250" height="125" rx="7"/><text class="label" x="815" y="418" text-anchor="middle">Firewall Device Cluster</text><text class="small" x="815" y="447" text-anchor="middle">Unmanaged or instructor-enabled</text><text class="tiny" x="815" y="478" text-anchor="middle">Concrete interfaces when provided</text>
+  <rect class="select" x="690" y="550" width="250" height="75" rx="7"/><text class="label" x="815" y="582" text-anchor="middle">Device Selection Policy</text><text class="tiny" x="815" y="607" text-anchor="middle">Maps graph node to device and BDs</text>
+
+  <rect class="epg" x="1060" y="235" width="220" height="95" rx="7"/><text class="label" x="1170" y="274" text-anchor="middle">Application EPG</text><text class="small" x="1170" y="302" text-anchor="middle">Contract provider</text>
+  <rect class="bd" x="1060" y="410" width="220" height="85" rx="7"/><text class="label" x="1170" y="445" text-anchor="middle">Application BD</text><text class="small" x="1170" y="473" text-anchor="middle">Provider-side network</text>
+
+  <path class="line" d="M200 330 V410 M1170 330 V410"/>
+  <path class="policyLine" d="M310 260 H395 M645 238 H690 M940 260 H1060"/>
+  <path class="serviceLine" d="M815 295 V380"/>
+  <path class="control" d="M815 505 V550"/>
+  <path class="control" d="M690 587 H520 V295 M940 587 H1170 V495"/>
+  <text class="lineLabel" x="350" y="246" text-anchor="middle">consumes</text><text class="lineLabel" x="985" y="246" text-anchor="middle">provides</text>
+  <text class="lineLabel" x="835" y="347">selects device</text><text class="lineLabel" x="835" y="536">renders graph</text>
+
+  <line class="line" x1="90" y1="710" x2="150" y2="710"/><text class="tiny" x="160" y="716">EPG-to-BD association</text>
+  <line class="policyLine" x1="390" y1="710" x2="450" y2="710"/><text class="tiny" x="460" y="716">contract relationship</text>
+  <line class="serviceLine" x1="690" y1="710" x2="750" y2="710"/><text class="tiny" x="760" y="716">service-graph selection</text>
+  <line class="control" x1="1010" y1="710" x2="1070" y2="710"/><text class="tiny" x="1080" y="716">device-selection mapping</text>
+</svg>

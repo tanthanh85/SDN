@@ -1,0 +1,268 @@
+[
+  {
+    "chapter": 1,
+    "index": 1,
+    "heading": "High-Level SDN Architecture",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-01.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-01.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 2,
+    "heading": "Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-02.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-02.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 3,
+    "heading": "Northbound and Southbound Interfaces",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-03.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-03.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 4,
+    "heading": "OpenFlow and the Historical SDN Model",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-04.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-04.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 5,
+    "heading": "Underlay and Overlay",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-05.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-05.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 6,
+    "heading": "Fabric Boundary",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-06.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-06.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 7,
+    "heading": "Policy Abstraction Diagram",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-07.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-07.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 8,
+    "heading": "Intent-Based Networking",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-08.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-08.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 9,
+    "heading": "Telemetry Flow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-09.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-09.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 10,
+    "heading": "Cisco ACI Deep Dive Overview",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-10.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-10.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 11,
+    "heading": "Cisco SD-Access Deep Dive Overview",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-11.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-11.svg"
+  },
+  {
+    "chapter": 1,
+    "index": 12,
+    "heading": "WAN Overlay Reference: Cisco Catalyst SD-WAN",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-12.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-01/mermaid-12.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 1,
+    "heading": "Design Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-01.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-01.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 2,
+    "heading": "Architecture View",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-02.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-02.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 3,
+    "heading": "Domain and Solution Fit Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-03.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-03.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 4,
+    "heading": "Multi-Domain SDN Design",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-04.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-04.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 5,
+    "heading": "Control Boundary",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-05.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-05.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 6,
+    "heading": "Boundary Model",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-06.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-06.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 7,
+    "heading": "Reference Pattern",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-07.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-07.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 8,
+    "heading": "Reference Pattern",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-08.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-08.svg"
+  },
+  {
+    "chapter": 2,
+    "index": 9,
+    "heading": "User-to-Application Flow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-09.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-02/mermaid-09.svg"
+  },
+  {
+    "chapter": 3,
+    "index": 1,
+    "heading": "Lifecycle Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-01.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-01.svg"
+  },
+  {
+    "chapter": 3,
+    "index": 2,
+    "heading": "Staging Topology Pattern",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-02.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-02.svg"
+  },
+  {
+    "chapter": 3,
+    "index": 3,
+    "heading": "Boundary Implementation Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-03.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-03.svg"
+  },
+  {
+    "chapter": 3,
+    "index": 4,
+    "heading": "Migration Strategy",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-04.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-04.svg"
+  },
+  {
+    "chapter": 3,
+    "index": 5,
+    "heading": "Change Window Structure",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-05.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-05.svg"
+  },
+  {
+    "chapter": 3,
+    "index": 6,
+    "heading": "Cutover Decision Flow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-06.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-03/mermaid-06.svg"
+  },
+  {
+    "chapter": 4,
+    "index": 1,
+    "heading": "Operations Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-01.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-01.svg"
+  },
+  {
+    "chapter": 4,
+    "index": 2,
+    "heading": "Underlay vs Overlay Decision Flow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-02.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-02.svg"
+  },
+  {
+    "chapter": 4,
+    "index": 3,
+    "heading": "Policy Flow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-03.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-03.svg"
+  },
+  {
+    "chapter": 4,
+    "index": 4,
+    "heading": "General Troubleshooting Method",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-04.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-04.svg"
+  },
+  {
+    "chapter": 4,
+    "index": 5,
+    "heading": "Incident Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-05.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-04/mermaid-05.svg"
+  },
+  {
+    "chapter": 5,
+    "index": 1,
+    "heading": "Automation Maturity Model",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-01.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-01.svg"
+  },
+  {
+    "chapter": 5,
+    "index": 2,
+    "heading": "Automation Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-02.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-02.svg"
+  },
+  {
+    "chapter": 5,
+    "index": 3,
+    "heading": "API Task Flow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-03.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-03.svg"
+  },
+  {
+    "chapter": 5,
+    "index": 4,
+    "heading": "Drift Control Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-04.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-04.svg"
+  },
+  {
+    "chapter": 5,
+    "index": 5,
+    "heading": "Agentic Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-05.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-05.svg"
+  },
+  {
+    "chapter": 5,
+    "index": 6,
+    "heading": "Closed-Loop Workflow",
+    "png": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-06.png",
+    "svg": "/Users/thandoan/Documents/Presentations/SDN/Assets/Mermaid/Chapter-05/mermaid-06.svg"
+  }
+]

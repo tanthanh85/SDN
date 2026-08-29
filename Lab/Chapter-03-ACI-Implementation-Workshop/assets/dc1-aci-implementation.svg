@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">DC1 Cisco ACI implementation topology</title>
+  <desc id="desc">Three APIC controllers on out-of-band management, two spines, four leaves, servers, and redundant eBGP external routing.</desc>
+  <defs>
+    <style>
+      .zone{stroke:#8fb5d3;stroke-width:3;rx:14}.z1{fill:#edf6fc}.z2{fill:#eef8f1}.z3{fill:#f7f2e8}.l2{stroke:#2c6fb0;stroke-width:4;fill:none}.l3{stroke:#2f7d4a;stroke-width:4;fill:none}.mgmt{stroke:#765a9b;stroke-width:3;stroke-dasharray:10 8;fill:none}.device{fill:#fff;stroke:#245a88;stroke-width:4}.label{font:600 23px Arial;fill:#18324a;text-anchor:middle}.small{font:600 18px Arial;fill:#18324a;text-anchor:middle}.zone-title{font:700 28px Arial;fill:#18324a}.link{font:700 17px Arial;fill:#18324a;text-anchor:middle}.legend{font:600 18px Arial;fill:#18324a}
+    </style>
+    <symbol id="switch" viewBox="0 0 100 70"><rect class="device" x="3" y="4" width="94" height="62" rx="12"/><path d="M24 22h52M18 33h64" stroke="#245a88" stroke-width="4" stroke-linecap="round"/><g fill="#d9e8f5" stroke="#245a88" stroke-width="2"><rect x="18" y="47" width="12" height="9"/><rect x="38" y="47" width="12" height="9"/><rect x="58" y="47" width="12" height="9"/><rect x="78" y="47" width="12" height="9"/></g></symbol>
+    <symbol id="controller" viewBox="0 0 90 80"><rect class="device" x="4" y="4" width="82" height="72" rx="10"/><circle cx="28" cy="27" r="8" fill="#d9e8f5" stroke="#245a88" stroke-width="3"/><circle cx="62" cy="27" r="8" fill="#d9e8f5" stroke="#245a88" stroke-width="3"/><circle cx="45" cy="56" r="8" fill="#d9e8f5" stroke="#245a88" stroke-width="3"/><path d="M34 33l7 15M56 33l-7 15" stroke="#245a88" stroke-width="3"/></symbol>
+    <symbol id="router" viewBox="0 0 90 90"><circle class="device" cx="45" cy="45" r="39"/><path d="M22 45h46M30 31L16 45l14 14M60 31l14 14-14 14" stroke="#245a88" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="server" viewBox="0 0 75 95"><rect class="device" x="5" y="4" width="65" height="87" rx="8"/><path d="M5 33h65M5 61h65" stroke="#245a88" stroke-width="3"/><circle cx="58" cy="19" r="5" fill="#247a3b"/><circle cx="58" cy="47" r="5" fill="#247a3b"/><circle cx="58" cy="75" r="5" fill="#247a3b"/></symbol>
+  </defs>
+  <rect width="1600" height="900" fill="#f8fbfe"/>
+  <text x="50" y="55" class="zone-title">DC1 ACI implementation baseline</text>
+  <rect class="zone z1" x="40" y="90" width="330" height="700"/>
+  <rect class="zone z2" x="400" y="90" width="790" height="700"/>
+  <rect class="zone z3" x="1220" y="90" width="340" height="700"/>
+  <text x="70" y="135" class="zone-title">Out-of-band management</text>
+  <text x="430" y="135" class="zone-title">Cisco ACI fabric</text>
+  <text x="1250" y="135" class="zone-title">External routed domain</text>
+
+  <path class="mgmt" d="M205 235L125 370M205 235L205 370M205 235L285 370M205 235L550 230M205 235L860 230M205 235L490 490M205 235L690 490M205 235L890 490M205 235L1090 490"/>
+  <path class="l3" d="M550 230L490 490M550 230L690 490M550 230L890 490M550 230L1090 490M860 230L490 490M860 230L690 490M860 230L890 490M860 230L1090 490"/>
+  <path class="l2" d="M490 490L500 690M690 490L700 690M890 490L900 690"/>
+  <path class="l3" d="M1090 490L1360 340M1090 490L1360 590"/>
+
+  <use href="#switch" x="155" y="185" width="100" height="70"/><text x="205" y="282" class="small">OOB switch pair</text>
+  <use href="#controller" x="80" y="330" width="90" height="80"/><use href="#controller" x="160" y="330" width="90" height="80"/><use href="#controller" x="240" y="330" width="90" height="80"/>
+  <text x="205" y="445" class="label">APIC cluster</text><text x="205" y="475" class="small">3 controllers</text>
+  <use href="#switch" x="500" y="195" width="100" height="70"/><text x="550" y="294" class="label">Spine 1</text>
+  <use href="#switch" x="810" y="195" width="100" height="70"/><text x="860" y="294" class="label">Spine 2</text>
+  <use href="#switch" x="440" y="455" width="100" height="70"/><use href="#switch" x="640" y="455" width="100" height="70"/><use href="#switch" x="840" y="455" width="100" height="70"/><use href="#switch" x="1040" y="455" width="100" height="70"/>
+  <text x="490" y="555" class="small">Leaf 1</text><text x="690" y="555" class="small">Leaf 2</text><text x="890" y="555" class="small">Leaf 3</text><text x="1090" y="555" class="small">Border leaf pair</text>
+  <use href="#server" x="463" y="645" width="75" height="95"/><use href="#server" x="663" y="645" width="75" height="95"/><use href="#server" x="863" y="645" width="75" height="95"/>
+  <text x="500" y="775" class="small">Corp EPGs</text><text x="700" y="775" class="small">Contractor EPGs</text><text x="900" y="775" class="small">Test EPGs</text>
+  <use href="#router" x="1315" y="295" width="90" height="90"/><use href="#router" x="1315" y="545" width="90" height="90"/>
+  <text x="1360" y="420" class="small">External router 1</text><text x="1360" y="670" class="small">External router 2</text>
+  <text x="1240" y="470" class="link">Redundant eBGP L3Out</text>
+  <line x1="55" y1="835" x2="120" y2="835" class="l2"/><text x="130" y="842" class="legend">Layer 2</text>
+  <line x1="280" y1="835" x2="345" y2="835" class="l3"/><text x="355" y="842" class="legend">Layer 3</text>
+  <line x1="500" y1="835" x2="565" y2="835" class="mgmt"/><text x="575" y="842" class="legend">Management/control</text>
+</svg>

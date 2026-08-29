@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Transition from Traditional Networking to SDN Consideration</title>
+  <desc id="desc">Journey from brownfield network challenges to SDN consideration, design, implementation, operations, and optimization.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7fafc}.card{fill:#fff;stroke:#1f4f79;stroke-width:2;rx:12}.active{fill:#e8f2ff}.future{fill:#eef9ee}.label{font:700 19px Arial;fill:#10243a}.small{font:14px Arial;fill:#29445f}.num{font:700 28px Arial;fill:#0b5cab}.arrow{stroke:#0b5cab;stroke-width:4;fill:none}.thin{stroke:#89a7c2;stroke-width:2;fill:none;stroke-dasharray:7 7}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#0b5cab"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1200" height="560"/>
+  <text x="40" y="55" class="label" style="font-size:28px">Transition from Traditional Network to SDN Consideration</text>
+  <text x="40" y="84" class="small">The corporation is not deploying SDN yet. It is learning how to evaluate SDN as an architecture and operating model.</text>
+
+  <rect x="55" y="145" width="190" height="230" class="card active"/>
+  <text x="78" y="190" class="num">1</text>
+  <text x="112" y="190" class="label">Traditional</text>
+  <text x="88" y="225" class="small">Manual changes</text>
+  <text x="88" y="250" class="small">VLAN/VRF policy</text>
+  <text x="88" y="275" class="small">Tool silos</text>
+  <text x="88" y="300" class="small">Slow rollout</text>
+
+  <rect x="285" y="145" width="190" height="230" class="card"/>
+  <text x="308" y="190" class="num">2</text>
+  <text x="342" y="190" class="label">Consider</text>
+  <text x="318" y="225" class="small">What is SDN?</text>
+  <text x="318" y="250" class="small">Which domains?</text>
+  <text x="318" y="275" class="small">What risks?</text>
+  <text x="318" y="300" class="small">What value?</text>
+
+  <rect x="515" y="145" width="190" height="230" class="card"/>
+  <text x="538" y="190" class="num">3</text>
+  <text x="572" y="190" class="label">Design</text>
+  <text x="548" y="225" class="small">Underlay/overlay</text>
+  <text x="548" y="250" class="small">Segmentation</text>
+  <text x="548" y="275" class="small">Boundaries</text>
+  <text x="548" y="300" class="small">Operations</text>
+
+  <rect x="745" y="145" width="190" height="230" class="card future"/>
+  <text x="768" y="190" class="num">4</text>
+  <text x="802" y="190" class="label">Implement</text>
+  <text x="778" y="225" class="small">Pilot</text>
+  <text x="778" y="250" class="small">Validate</text>
+  <text x="778" y="275" class="small">Rollback</text>
+  <text x="778" y="300" class="small">Migrate waves</text>
+
+  <rect x="975" y="145" width="190" height="230" class="card future"/>
+  <text x="998" y="190" class="num">5</text>
+  <text x="1032" y="190" class="label">Operate</text>
+  <text x="1008" y="225" class="small">Assure</text>
+  <text x="1008" y="250" class="small">Troubleshoot</text>
+  <text x="1008" y="275" class="small">Automate</text>
+  <text x="1008" y="300" class="small">Optimize</text>
+
+  <path class="arrow" marker-end="url(#arrow)" d="M245 260h40"/>
+  <path class="arrow" marker-end="url(#arrow)" d="M475 260h40"/>
+  <path class="arrow" marker-end="url(#arrow)" d="M705 260h40"/>
+  <path class="arrow" marker-end="url(#arrow)" d="M935 260h40"/>
+  <path class="thin" d="M150 405c230 85 620 85 920 0"/>
+  <text x="390" y="470" class="small">Learning flow: understand traditional challenges first, then evaluate SDN concepts before design and implementation.</text>
+</svg>

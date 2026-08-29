@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PetroVale SDN Design Workshop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="reference-panel" aria-label="Workshop menu">
+      <div class="panel-header">
+        <p class="eyebrow">PetroVale Energy</p>
+        <h1>SDN Design Workshop</h1>
+        <p class="subtitle">Data center, WAN, campus, identity, and segmentation design</p>
+      </div>
+
+      <nav class="menu" aria-label="Workshop sections">
+        <button class="menu-item active" type="button" data-view="questions">
+          <span>Questions</span>
+          <small>One-way decision flow</small>
+        </button>
+        <button class="menu-item" type="button" data-view="background">
+          <span>Company Background</span>
+          <small>Organization, drivers, and target domains</small>
+        </button>
+        <button class="menu-item" type="button" data-view="network">
+          <span>Current Network Diagram</span>
+          <small>Current and target design references</small>
+        </button>
+        <button class="menu-item" type="button" data-view="contexts">
+          <span class="menu-title-row">
+            <span class="menu-label">Scenario Updates</span>
+            <span class="menu-badge hidden" aria-label="Unread scenario updates"></span>
+          </span>
+          <small class="menu-hint">Material stakeholder developments only</small>
+        </button>
+      </nav>
+
+      <section class="menu-note">
+        <h2>Workshop Rule</h2>
+        <p>Use the menu to review company context, network diagrams, and new scenario updates. In Questions, each answer is locked after clicking <strong>Next</strong>.</p>
+      </section>
+    </aside>
+
+    <main class="assessment-panel">
+      <section id="questionView" class="question-view content-view" aria-live="polite"></section>
+      <section id="resultsView" class="results-view content-view hidden" aria-live="polite"></section>
+
+      <section id="backgroundView" class="content-view hidden" aria-live="polite">
+        <div class="content-card">
+          <p class="eyebrow dark-label">Company Background</p>
+          <h2>PetroVale Energy SDN Design Workshop</h2>
+          <p>PetroVale Energy is moving from SDN concept evaluation into design. The architecture direction for this chapter is to design the data center first with Cisco ACI, then WAN with Cisco SD-WAN, then campus with Cisco SD-Access and ISE-based identity policy.</p>
+          <div class="role-callout">
+            <h3>Your Role</h3>
+            <p>You are part of PetroVale's IT organization as the SDN Network Architect. Your responsibility is to evaluate design options, choose correct diagrams and traffic flows, identify authentication and enforcement points, and advise the architecture working group on a staged transition from the brownfield network to ACI, SD-WAN, SD-Access, and ISE-based policy.</p>
+          </div>
+          <h3>Organization and Stakeholders</h3>
+          <div class="org-grid">
+            <article>
+              <h4>Executive Leadership</h4>
+              <ul>
+                <li><strong>Nguyễn Thu Hà</strong>, CEO - sponsors the modernization program and expects safe, staged business value.</li>
+                <li><strong>Trần Minh Linh</strong>, CIO - owns enterprise IT strategy and wants a coherent Cisco-oriented SDN design.</li>
+                <li><strong>Nguyễn Hoàng Minh</strong>, CTO - leads technical governance and validates routing, migration, and domain boundaries.</li>
+                <li><strong>Lê Thu Trang</strong>, CISO - owns cyber risk, segmentation, identity policy, and IT/OT security posture.</li>
+              </ul>
+            </article>
+            <article>
+              <h4>IT and Architecture</h4>
+              <ul>
+                <li class="learner-role"><strong>You</strong>, SDN Network Architect - member of the IT team responsible for SDN architecture guidance.</li>
+                <li><strong>Phạm Quỳnh Anh</strong>, Enterprise Architect - coordinates ACI, SD-WAN, SD-Access, ISE, and migration boundaries.</li>
+                <li><strong>Đỗ Ngọc Lan</strong>, Director of Network Operations - owns NOC readiness, assurance, and operational transition.</li>
+                <li><strong>Vũ Đức Anh</strong>, Automation Lead - evaluates ISE/device data, telemetry, and later profiling phases.</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Domain Stakeholders</h4>
+              <ul>
+                <li><strong>Nguyễn Văn Thành</strong>, Refinery Operations Manager - protects factory and OT availability during any transition.</li>
+                <li><strong>Trần Hải Yến</strong>, WAN Operations Lead - owns MPLS coexistence, OSPF exchange, and SD-WAN migration.</li>
+                <li><strong>Lê Quốc Bảo</strong>, Cloud Platform Lead - validates application flows and data center boundary behavior.</li>
+                <li><strong>Phạm Thùy Dương</strong>, VP Regional Operations - represents branch, factory, and business-user experience.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="two-column">
+            <article>
+              <h3>Design Priorities</h3>
+              <ul>
+                <li>Move data center design toward Cisco ACI with one tenant and two VRFs: Corp and Contractor.</li>
+                <li>Move WAN design toward Cisco SD-WAN with two virtual networks: Corp and Contractor.</li>
+                <li>Move campus design toward Cisco SD-Access with macro segmentation and ISE-based microsegmentation.</li>
+                <li>Use 802.1X for users; ISE uses AD group membership and instructs switches to apply SGTs.</li>
+                <li>Classify IoT devices by MAC address in phase one, with profiling planned later.</li>
+                <li>Preserve routing, firewall, and OT safety boundaries during migration.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Brownfield Constraints</h3>
+              <ul>
+                <li>Two independent data centers use traditional two-tier switching; DC cores are default gateways for all VLANs.</li>
+                <li>Each data center exits the internet through one active/standby firewall pair using a default route.</li>
+                <li>WAN routers connect to remote offices and factories through two Layer 3 MPLS VPN providers using OSPF.</li>
+                <li>The campus mixes two-tier and three-tier design, HSRP, EIGRP, OSPF, and redistribution.</li>
+                <li>Five branches and two factories have local OSPF cores; OT is currently extended Layer 2.</li>
+              </ul>
+            </article>
+          </div>
+          <img class="wide-visual" src="assets/sdn-transition-journey.svg" alt="Chapter 2 target design direction with ACI SD-WAN SD-Access and ISE">
+        </div>
+      </section>
+
+      <section id="networkView" class="content-view hidden" aria-live="polite">
+        <div class="content-card">
+          <p class="eyebrow dark-label">Current Network Diagram</p>
+          <h2>Brownfield Network Baseline</h2>
+          <p>The current environment uses traditional routing, VLANs, ACLs, manual port assignment, basic SNMP monitoring, and a separate syslog server. These diagrams are the primary reference for design, migration, authentication, enforcement, and traffic-flow questions.</p>
+          <img class="wide-visual" src="assets/brownfield-petroleum-network.svg" alt="Brownfield petroleum enterprise network diagram">
+          <div class="two-column">
+            <article>
+              <h3>Current State</h3>
+              <ul>
+                <li>Two independent DCs with traditional two-tier switching and core default gateways.</li>
+                <li>WAN uses two Layer 3 MPLS VPN providers and OSPF route exchange.</li>
+                <li>Main campus mixes two-tier and three-tier design with EIGRP-to-OSPF redistribution.</li>
+                <li>Branches and factories have local OSPF cores; OT is extended Layer 2.</li>
+                <li>Segmentation relies on VLANs and 5-tuple ACLs across many components.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Observed Challenges</h3>
+              <ul>
+                <li>No application-aware WAN routing.</li>
+                <li>No identity per user or IoT device and no current microsegmentation.</li>
+                <li>No macro segmentation between corporate and contractor traffic.</li>
+                <li>DC has weak east-west control and still depends on STP behavior.</li>
+                <li>Users moving ports trigger manual outlet and VLAN troubleshooting.</li>
+              </ul>
+            </article>
+          </div>
+          <h2>Target Design Direction</h2>
+          <img class="wide-visual" src="assets/it-ot-boundary.svg" alt="IT OT boundary diagram">
+        </div>
+      </section>
+
+      <section id="contextsView" class="content-view hidden" aria-live="polite">
+        <div class="content-card">
+          <p class="eyebrow dark-label">Scenario Updates</p>
+          <h2>Scenario Updates</h2>
+          <p>A new record appears only when a stakeholder introduces a material constraint, misconception, operational risk, or governance decision that changes how the related question must be assessed.</p>
+          <div id="contextCards" class="context-card-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>
